@@ -1,0 +1,66 @@
+.home-button {
+    background-image: url(../../assets/pinguin-logo-text.svg);
+    background-size: 100px;
+    width: 100px;
+    height: 45px;
+    background-position: center;;
+    background-repeat: no-repeat;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    padding-right: 15px;
+}
+
+.session-links {
+    display: flex;
+    width: 157px;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.profile-menu-wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50px;
+    /* justify-content: right;
+    align-items: right; */
+}
+
+.profile-menu {
+    height: 40px;
+    width: 40px;
+    background-image: url(../../assets/dropdown.png);
+    background-size: 20px;
+    background-position: center;
+    border-color: white;
+    background-color: white;
+    border-radius: 40px;
+    border-style: none;
+    background-repeat: no-repeat;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.profile-menu:hover {
+    background-color: rgb(222, 222, 222);
+}
+
+.profile-dropdown-wrapper {
+    margin-top: 10px;
+    border-radius: 16px;
+    box-shadow: rgb(0 0 0 / 45%) 0px 0px 4px;
+    height: 300px;
+    width: 200px;
+    position: absolute;
+    top: 50px;
+    right: 15px;
+}
+
+
+

@@ -1,0 +1,39 @@
+.modal-signup {
+        all: none;
+        width: 80.83px;
+        height: 40px;
+        border-radius: 24px;
+        background-color: #EFEFEF;
+        border-color: #EFEFEF;
+        color: #111111;
+        border-style: none;
+        font-size: 16px;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+        font-weight: 600;
+        cursor: pointer;
+
+}
+
+.modal-signup:hover {
+    background-color: #e2e2e2;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    width: 484px;
+    border-radius: 32px;
+    justify-content: center;
+    align-items: center;
+}
+
+.change-form {
+    background-color: white;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    border: none;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+}
