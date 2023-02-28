@@ -1,5 +1,5 @@
 class Api::PinsController < ApplicationController
-    before_action require_logged_in, only: [:create, :destroy, :update]
+    before_action :require_logged_in, only: [:create, :destroy, :update]
     def index
         @pin = Pin.all
     end

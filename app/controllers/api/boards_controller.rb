@@ -1,5 +1,5 @@
 class Api::BoardsController < ApplicationController
-    before_action require_logged_in only: [:create, :destroy, :update]
+    before_action :require_logged_in only: [:create, :destroy, :update]
     
     def show
         @board = Board.find_by(params[:id])
