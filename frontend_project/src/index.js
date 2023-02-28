@@ -38,11 +38,7 @@ window.signupUser = signupUser;
       }
     }
   }
-
   
-  
-  // const store = configureStore(initialState)
-
   function Root(){
     return (
       <ModalProvider>

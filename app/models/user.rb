@@ -1,27 +1,28 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  username        :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
 class User < ApplicationRecord
     validates :username, 
         uniqueness: true, 
         length: { in: 3..30 }, 
         format: { without: URI::MailTo::EMAIL_REGEXP, message:  "can't be an email" }
-    # validates :email, 
-    #     uniqueness: true, 
-    #     length: { in: 3..255 }, 
-    #     format: { with: URI::MailTo::EMAIL_REGEXP }
     validates :session_token, presence: true, uniqueness: true
     validates :password, length: { in: 6..255 }, allow_nil: true
 
     attr_reader :password
     before_validation :ensure_session_token
-    
-    # def self.find_by_credentials(credential, password)
-    #     user = User.find_by(username: credential)
-    #     if user && user.is_password?(password)
-    #         user
-    #     else
-    #         nil
-    #     end
-    # end
 
+    has_many :pins
+    has_many :boards
+    
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username)
         if user && user.is_password?(password)
@@ -46,7 +47,7 @@ class User < ApplicationRecord
         self.save!
         self.session_token
     end
-    
+
     private
 
     def ensure_session_token
