@@ -1,6 +1,14 @@
 class Api::PinsController < ApplicationController
     before_action require_logged_in, only: [:create, :destroy, :update]
-    
+    def index
+        @pin = Pin.all
+    end
+
+    def show
+        @pin = Pin.find_by(params[:id])
+        render :show
+    end
+
     def create
         @pin = Pin.new(pin_params)
         if @pin
@@ -12,7 +20,7 @@ class Api::PinsController < ApplicationController
     end
 
     def destroy
-        @pin = Pin.find_by(params[:pin][:id])
+        @pin = Pin.find_by(params[:id])
         if @pin 
             delete @pin
         else
@@ -21,6 +29,12 @@ class Api::PinsController < ApplicationController
     end
 
     def update
+        @pin = Pin.find_by(params[:id])
+        if @pin.update(pin_params)
+            render :show
+        else
+            render json: {errors: "couldn't update pin"}
+        end
     end
 
     private 

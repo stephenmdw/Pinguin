@@ -25,18 +25,7 @@ class Api::SessionsController < ApplicationController
     end
   end
 
-  # def create
-  #   # byebug 
-  #   @user = User.find_by_credentials(params[:user][:credential], params[:session][:password])
 
-  #   if @user
-  #     login!(@user)
-  #     render 'api/users/show'
-  #     # render json: @user
-  #   else
-  #     render json: { errors: ['The provided credentials were invalid.'] }, status: 422
-  #   end
-  # end
 
   def destroy
     logout!
@@ -44,8 +33,5 @@ class Api::SessionsController < ApplicationController
     render json: { messaage: 'success' }
   end
 
-  # def user_params
-  #   params.require(:user).permit(:email, :username, :password)
-  # end
-  
+
 end

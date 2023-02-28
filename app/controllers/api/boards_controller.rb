@@ -1,4 +1,11 @@
 class Api::BoardsController < ApplicationController
+    before_action require_logged_in only: [:create, :destroy, :update]
+    
+    def show
+        @board = Board.find_by(params[:id])
+        render :show
+    end
+
     def create
         @board = Board.new(board_params)
         if @board
@@ -15,7 +22,12 @@ class Api::BoardsController < ApplicationController
     end
 
     def update
-        
+        @board.find_by(params[:id])
+        if @board.update(board_params) 
+            render :show
+        else
+            render json: {error: "Unable to update board"}
+        end
     end
 
     private 

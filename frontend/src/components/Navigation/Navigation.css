@@ -7,11 +7,31 @@
     background-repeat: no-repeat;
 }
 
+.small-home-button {
+        background-image: url(../../assets/pinguin-logo.svg);
+        background-size: 40px;
+        width: 33px;
+        height: 43px;
+        background-position: center;;
+        background-repeat: no-repeat;
+        padding-right: 10px;
+}
+.small-home-button:hover {
+    background-color: rgb(187, 187, 187);
+    border-radius: 40px;
+    /* need to remove background from image  */
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     padding: 10px;
     padding-right: 15px;
+}
+
+.left-side {
+    display: flex;
+
 }
 
 .session-links {
@@ -99,6 +119,7 @@
     background-color: rgba(255, 255, 255, 0);
     border-style: none;
     font-size: 17px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
     width: 100%;
     height: 100%;
     font-weight: 600;

@@ -6,7 +6,7 @@ import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal';
 import './Navigation.css';
 import { useState } from 'react';
-
+import PinFormModal from '../PinFormModal';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -36,11 +36,16 @@ function Navigation() {
 
   return (
     <div className='navbar'>
-
+      <div className='left-side'>
       <NavLink className="home-link" exact to="/">
-        <div className="home-button"></div>
+        <div className={sessionUser ? "small-home-button" : "home-button"}></div>
       </NavLink>
+
+      {sessionUser ? <PinFormModal/> : ""}
+      </div>
+
       {sessionLinks}
+
     </div>
   );
 }

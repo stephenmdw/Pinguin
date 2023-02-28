@@ -5,7 +5,6 @@ import './LoginForm.css'
 
 
 function LoginFormModal(props) {
-    // const [showLoginModal, setShowLoginModal] = useState(false);
     const showLoginModal = props.showLoginModal
     const setShowLoginModal = props.setShowLoginModal
     const setShowSignUpModal = props.setShowSignUpModal
