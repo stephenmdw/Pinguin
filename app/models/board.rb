@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 class Board < ApplicationRecord
-    validates :title, :user, :created_at presence: true
+    validates :title, :user, :created_at, presence: true
     
     belongs_to :user
     has_many :pins
