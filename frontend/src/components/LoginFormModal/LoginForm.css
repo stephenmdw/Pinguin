@@ -84,8 +84,9 @@
 
 .login-pinguin-logo {
     background-image: url(../../assets/pinguin-logo.svg);
-    background-size: 60px;
+    background-size: 40px;
     width: 60px;
     height: 46px;
+    background-position: center;
     background-repeat: no-repeat;
 }

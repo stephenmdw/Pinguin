@@ -16,7 +16,7 @@ import { ModalProvider } from './context/Modal';
 const store = configureStore()
 
 if (process.env.NODE_ENV !== 'production') {
-  window.store = store;
+  window.store = store; //why is window.store not defined here?
   window.csrfFetch = csrfFetch;
   window.sessionActions = sessionActions;
 }
@@ -31,13 +31,13 @@ window.signupUser = signupUser;
   let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
   let initialState = {};
   
-  if (currentUser) {
-    initialState = {
-      users: {
-        [currentUser.id]: currentUser
-      }
-    }
-  }
+  // if (currentUser) {
+  //   initialState = {
+  //     users: {
+  //       [currentUser.id]: currentUser
+  //     }
+  //   }
+  // }
   
   function Root(){
     return (

@@ -1,6 +1,12 @@
 class Api::BoardsController < ApplicationController
-    before_action :require_logged_in, only: [:create, :destroy, :update]
+    before_action :require_logged_in, only: [:index, :create, :destroy, :update]
     
+    def index
+        # debugger
+        @boards = Board.all
+        # render :index
+    end
+
     def show
         @board = Board.find_by(params[:id])
         render :show
@@ -17,12 +23,12 @@ class Api::BoardsController < ApplicationController
     end
     
     def destroy
-        @board = Board.find_by(params[:id])
+        @board = Board.find(params[:id])
         @board.delete
     end
 
     def update
-        @board.find_by(params[:id])
+        @board.find(params[:id])
         if @board.update(board_params) 
             render :show
         else

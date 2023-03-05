@@ -1,0 +1,28 @@
+.pin-index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.pin-index-item {
+    display: flex;
+    /* border-style: solid; */
+    border-radius: 16px;
+    width: 236px;
+    height: 420px;
+    margin: 10px;
+    background-color:rgba(204, 204, 204, 0.532)
+}
+
+.index-image:hover {
+    color: rgba(204, 204, 204, 0.532);
+}
+
+.index-image {
+    height: 100%;
+    width: 100%;
+    border-radius: 16px;
+    object-fit: cover;
+}

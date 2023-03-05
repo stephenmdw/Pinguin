@@ -20,8 +20,13 @@ class User < ApplicationRecord
     attr_reader :password
     before_validation :ensure_session_token
 
-    has_many :pins
-    has_many :boards
+    has_many :pins,
+        foreign_key: :user_id,
+        class_name: :Pin,
+        dependent: :destroy 
+        
+    has_many :boards,
+        dependent: :destroy
     
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username)

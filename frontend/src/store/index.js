@@ -2,10 +2,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from  'redux-thunk'
 import usersReducer from './usersReducer'
 import session from './session';
+import pinsReducer from './pinsReducer';
+import boardsReducer from './boardsReducer';
 
 export const rootReducer = combineReducers({
     users: usersReducer,
-    session
+    session,
+    pins: pinsReducer,
+    boards: boardsReducer
 })
 
 let enhancer;

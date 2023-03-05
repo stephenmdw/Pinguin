@@ -6,28 +6,34 @@ import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal';
 import './Navigation.css';
 import { useState } from 'react';
-import PinFormModal from '../PinFormModal';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
-
   let sessionLinks;
+
   if (sessionUser) {
+    let username = sessionUser.username
+    let initial = username.slice(0,1)
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
+      <div className='profile-and-session'>
+        <NavLink className='user-link' to={`users/${sessionUser.id}`}>
+          <div className='user-link-initial'>{initial}</div>
+        </NavLink>
+        <ProfileButton user={sessionUser} />
+      </div>
     );
   } else {
     sessionLinks = (
       <div className="session-links">
-        <LoginFormModal 
+        <LoginFormModal
           showLoginModal={showLoginModal}
           setShowLoginModal={setShowLoginModal}
-          setShowSignUpModal={setShowSignUpModal}/>
-        <SignUpFormModal 
-          showSignUpModal={showSignUpModal} 
+          setShowSignUpModal={setShowSignUpModal} />
+        <SignUpFormModal
+          showSignUpModal={showSignUpModal}
           setShowSignUpModal={setShowSignUpModal}
           setShowLoginModal={setShowLoginModal} />
       </div>
@@ -37,15 +43,16 @@ function Navigation() {
   return (
     <div className='navbar'>
       <div className='left-side'>
-      <NavLink className="home-link" exact to="/">
-        <div className={sessionUser ? "small-home-button" : "home-button"}></div>
-      </NavLink>
+        <NavLink className="home-link" exact to="/">
+          <div className={sessionUser ? "small-home-button" : "home-button"}></div>
+        </NavLink>
 
-      {sessionUser ? <PinFormModal/> : ""}
+        {sessionUser ? <NavLink className="post-form-button" to="/pin-builder">Create</NavLink> : ""}
       </div>
-
-      {sessionLinks}
-
+      <div >
+        {sessionLinks}
+      </div>
+      {/* Add links to user's boards */}
     </div>
   );
 }

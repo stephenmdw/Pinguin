@@ -1,18 +1,23 @@
 class Api::PinsController < ApplicationController
     before_action :require_logged_in, only: [:create, :destroy, :update]
+    wrap_parameters include: Pin.attribute_names + ['altText', 'destinationLink'] + [:photo]
+
     def index
-        @pin = Pin.all
+        # debugger
+        @pins = Pin.all
     end
 
     def show
-        @pin = Pin.find_by(params[:id])
+        @pin = Pin.find(params[:id])
+        # debugger
         render :show
     end
 
     def create
+        # debugger
         @pin = Pin.new(pin_params)
-        if @pin
-            @pin.save
+        @pin.user_id = current_user.id
+        if @pin.save
             render :show
         else
             render json: {errors: 'you fucked up boi'}
@@ -20,7 +25,7 @@ class Api::PinsController < ApplicationController
     end
 
     def destroy
-        @pin = Pin.find_by(params[:id])
+        @pin = Pin.find(params[:id])
         if @pin 
             delete @pin
         else
@@ -29,7 +34,7 @@ class Api::PinsController < ApplicationController
     end
 
     def update
-        @pin = Pin.find_by(params[:id])
+        @pin = Pin.find(params[:id])
         if @pin.update(pin_params)
             render :show
         else
@@ -40,7 +45,6 @@ class Api::PinsController < ApplicationController
     private 
 
     def pin_params
-        require(:pin).permit(:title, :description, :alt_text, :destination_link)
-        #do i need to include created_at, updated_at, user_id, and board_id?
+        params.require(:pin).permit(:title, :description, :alt_text, :destination_link, :photo)
     end
 end

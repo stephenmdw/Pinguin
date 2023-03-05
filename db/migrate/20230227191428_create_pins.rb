@@ -19,6 +19,3 @@ class CreatePins < ActiveRecord::Migration[7.0]
     add_index :users, :username, unique: true
   end
 end
-
-#do I need line 12
-#Should I add an index to :user :username, unique: true?

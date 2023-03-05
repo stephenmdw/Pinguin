@@ -1,5 +1,6 @@
 class Api::UsersController < ApplicationController
   before_action :require_logged_out, only: [:create]
+  before_action :require_logged_in, only: [:show]
   wrap_parameters include: User.attribute_names + ['password']
 
   def create
@@ -10,7 +11,12 @@ class Api::UsersController < ApplicationController
     else
         render json: @user.errors.full_messages, status: 422
     end
-end
+  end
+
+  # def show
+  #   @user = User.find(params[:id])
+  #   render :show
+  # end
 
   private
 

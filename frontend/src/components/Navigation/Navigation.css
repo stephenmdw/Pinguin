@@ -9,28 +9,56 @@
 
 .small-home-button {
         background-image: url(../../assets/pinguin-logo.svg);
-        background-size: 40px;
-        width: 33px;
+        background-size: 25px;
+        width: 43px;
         height: 43px;
         background-position: center;;
         background-repeat: no-repeat;
-        padding-right: 10px;
 }
+
 .small-home-button:hover {
     background-color: rgb(187, 187, 187);
-    border-radius: 40px;
+    border-radius: 43px;
     /* need to remove background from image  */
 }
+
+.post-form-button {
+    text-decoration-line: none;
+    all: none;
+    display: flex;
+    border-radius: 24px;
+    color: #111111;
+    border-style: none;
+    font-size: 16px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+
 
 .navbar {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
-    padding-right: 15px;
+    padding-top: 4px;
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-bottom: 4px;
+    background-color: white;
+    height: 72px;
+    align-items: center;
 }
 
 .left-side {
     display: flex;
+    width: 200px;
+    /* flex-direction: space-between; */
 
 }
 
@@ -39,6 +67,7 @@
     width: 157px;
     height: 100%;
     justify-content: space-between;
+    align-items: center;
 }
 
 .profile-menu-wrapper{
@@ -46,6 +75,7 @@
     flex-direction: column;
     height: 100%;
     width: 50px;
+    justify-content: center;
     /* justify-content: right;
     align-items: right; */
 }
@@ -83,6 +113,7 @@
     right: 15px;
     justify-content: center;
     align-items: center;
+    background-color: white;
 
 }
 
@@ -113,6 +144,7 @@
 
 .profile-dropdown li:hover {
     background-color: rgb(212, 212, 212);
+    border-radius: 12px;
 }
 
 .logout-button {
@@ -125,4 +157,34 @@
     font-weight: 600;
 }
 
+.user-link-wrapper{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.user-link {
+    width: 30px;
+    height: 30px;
+    border-radius:30px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration-line: none;
+}
+
+.user-link-initial {
+    font-size: 10px;
+    color: black;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+}
+.profile-and-session {
+    display: flex;
+    flex: row;
+    width: 110px;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -13,6 +13,19 @@ export const removeUser = (userId) => ({
     userId
 });
 
+export const getUser = (userId) => (state) => {
+    return state.users ? state.users[userId] : null
+}
+
+export const fetchUser = (user) => async dispatch => {
+    let res = await fetch(`users/${user.id}`)
+
+    if(res.ok) {
+        let fetchedUser = res.json()
+        dispatch(receiveUser(fetchedUser))
+    }
+}
+
 // export const loginUser = (user) => async (dispatch) => {
 //     let res = await csrfFetch('/api/session', {
 //         method: "POST",
