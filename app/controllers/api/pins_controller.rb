@@ -27,14 +27,14 @@ class Api::PinsController < ApplicationController
     def destroy
         @pin = Pin.find(params[:id])
         if @pin 
-            delete @pin
+            @pin.delete
         else
             render json: {errors: 'pin not found'}
         end
     end
 
     def update
-        @pin = Pin.find(params[:id])
+        @pin = Pin.find_by(id: params[:id])
         if @pin.update(pin_params)
             render :show
         else

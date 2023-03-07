@@ -2,144 +2,147 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../../store/session";
-import { createPin } from "../../../store/pinsReducer";
-import RemoveContent from './RemoveContent'
+import { deletePin, updatePin } from "../../../store/pinsReducer";
+import RemoveContent from "../PinForm/RemoveContent";
 
-export default function PinForm() {
+export default function PinEditForm({ setShowPinEditModal, pin }) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     let userId = sessionUser.id
 
     //setting states
     const [errors, setErrors] = useState([]);
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
-    const [altText, setAltText] = useState('')
-    const [destinationLink, setDestinationLink] = useState('')
-    const [photoFile, setPhotoFile] = useState(null);
-    const [photoUrl, setPhotoUrl] = useState(null)
+    const [title, setTitle] = useState(pin.title)
+    const [description, setDescription] = useState(pin.description)
+    const [altText, setAltText] = useState(pin.altText)
+    const [destinationLink, setDestinationLink] = useState(pin.destinationLink)
 
 
-    //handle uploading files
-    const handleFile = ({ currentTarget }) => {
-        const file = currentTarget.files[0];
-        setPhotoFile(file);
-        if (file) {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-            fileReader.onload = () => setPhotoUrl(fileReader.result);
+    function handleSubmit(e) {
+        e.preventDefault()
+        let newPin = { ...pin, title, description, altText, destinationLink }
+        if (dispatch(updatePin(newPin))) {
+            setShowPinEditModal(false)
         }
-        else setPhotoUrl(null);
     }
 
-    // function handleSubmit(e) {
-    //     e.preventDefault()
-    //     let newPin = { ...pin, title, description, altText, destinationLink, photoFile}
-    //     dispatch(createPin(newPin))
-    // }
+    function deleteCurrentPin() {
+        dispatch(deletePin(pin.id))
+        setShowPinEditModal(false)
+    }
 
     function deleteContent() {
         setTitle("")
         setDescription("")
         setAltText("")
         setDestinationLink("")
-        setPhotoFile(null)
-        setPhotoUrl(null)
-      }
-      
-    async function handleSubmit(e) {
-        e.preventDefault()
-        const formData = new FormData();
-        formData.append('pin[title]', title);
-        formData.append('pin[description]', description);
-        formData.append('pin[altText]', altText);
-        formData.append('pin[destinationLink]', destinationLink);
-        formData.append('pin[photo]', photoFile);
-        dispatch(createPin(formData))
-        deleteContent()
     }
 
-   
-    let preview = null;
-    if (photoUrl) preview = <img src={photoUrl} alt="" />;
+    console.log(pin)
+
+    // function handleSubmit(e) {
+    //     e.preventDefault()
+    //     const formData = new FormData();
+    //     console.log(formData)
+    //     formData.append('pin[title]', title);
+    //     formData.append('pin[description]', description);
+    //     formData.append('pin[altText]', altText);
+    //     formData.append('pin[destinationLink]', destinationLink);
+    //     dispatch(updatePin(formData))
+
+    // }
 
     //get preview photo to show over the image input area, while not displacing anything
 
     return (
-        <div className='pin-form-page'>
-            <form onSubmit={handleSubmit} className="pin-form">
-                <div className='pin-form-wrapper'>
-                    <div className='submit-bar'>
-                        <div className="dotdotdot">
-                            <RemoveContent 
-                                setTitle={setTitle}
-                                setDescription={setDescription}
-                                setAltText={setAltText}
-                                setDestinationLink={setDestinationLink}
-                                setPhotoFile={setPhotoFile}
-                                setPhotoUrl={setPhotoUrl}
-                                />
-                        </div>
-
-                        <div className='save-and-board'>
-                            <div className="board-dropdown">
-                                
-                            </div>
-                            <input className="save-input" type="submit" value="Save" />
-                        </div>
+        <form className="pin-edit-form">
+            <div className='pin-edit-form-wrapper'>
+                <header className='edit-header'>Edit this Pin</header>
+                {/* <div className='submit-bar'>
+                    <div className="dotdotdot">
+                        <RemoveContent
+                            setTitle={setTitle}
+                            setDescription={setDescription}
+                            setAltText={setAltText}
+                            setDestinationLink={setDestinationLink}
+                        />
                     </div>
-                    <div className='input-area-wrapper'>
-                        <div className="image-upload-area">
-                            <div><input
-                                type="file"
-                                className="image-upload-button"
-                                onChange={handleFile}></input>
-                                <div className='preview-photo'>{preview}</div>
+
+                </div> */}
+                <div className="pin-edit-area">
+                    <div className='left-edit-input'>
+                        <div className='edit-input-wrapper'>
+                            <div className='label-edit-wrapper'>
+                                <label>Title</label>
                             </div>
-                            <div className='save-from-site-div'><input className='save-from-site-button' type="text" placeholder="Save from site"></input></div>
-                        </div>
-                        <div className="pin-input-area">
-                            <div className='top-input'>
+                            <div className='single-line-edit-input-wrapper'>
                                 <input
                                     type="text"
                                     placeholder="Add your title"
                                     value={title}
-                                    className="title-input"
+                                    className="single-line-edit-input"
                                     onChange={(e) => setTitle(e.target.value)}
                                     require='true'>
                                 </input>
-                                <div>
-                                    <div></div>
-                                    <div >
-                                        <p className="pin-form-current-user">{sessionUser.username}</p>
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
+                        <div className='edit-input-wrapper'>
+                            <div className='label-edit-wrapper'>
+                                <label>Description</label>
+                            </div>
+                            <div className='description-edit-input-wrapper'>
                                 <input
                                     type="text"
                                     placeholder="Tell everyone what your pin is about"
                                     value={description}
-                                    className='description-input'
+                                    className='description-edit-input'
                                     onChange={(e) => setDescription(e.target.value)}></input>
+                            </div>
+
+                        </div>
+                        <div className='edit-input-wrapper'>
+                            <div className='label-edit-wrapper'>
+                                <label>Alt text</label>
+                            </div>
+                            <div className='single-line-edit-input-wrapper'>
+
                                 <input
                                     type="text"
                                     placeholder="Explain what people see in the Pin"
-                                    className="alt-text-input"
+                                    className="single-line-edit-input"
                                     value={altText}
                                     onChange={(e) => setAltText(e.target.value)}></input>
                             </div>
-                            <div className='bottom-input'>
+                        </div>
+                        <div className='edit-input-wrapper'>
+                            <div className='label-edit-wrapper'>
+                                <label>Website</label>
+                            </div>
+                            <div className='single-line-edit-input-wrapper'>
                                 <input
                                     type="text"
-                                    className='destination-input'
+                                    className='single-line-edit-input'
                                     placeholder="Add a destination link"
                                     value={destinationLink}
                                     onChange={(e) => setDestinationLink(e.target.value)}></input>
                             </div>
                         </div>
                     </div>
+                    <div>
+                        <img className='image-edit-preview' src={pin.photoUrl} />
+                    </div>
                 </div>
-            </form>
-        </div >
+                <div className='save-and-delete-wrapper'>
+                    <button className="delete-button" onClick={() => dispatch(deletePin(pin.id))}>
+                        Delete</button>
+                    <button className='cancel-button' onClick={() => setShowPinEditModal(false)}>Cancel</button>
+                    {/* <input className="save-input" type="submit" value="Save" /> */}
+                    <button className='save-input' onClick={(e) => handleSubmit(e)}>Save</button>
+                </div>
+
+            </div>
+        </form>
+
 
     )
 }

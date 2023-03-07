@@ -23,9 +23,11 @@ class Board < ApplicationRecord
 
     has_many :pinboard,
         foreign_key: :board_id,
-        class_name: :Pinboard
+        class_name: :Pinboard,
+        dependent: :destroy
 
     has_many :pins, 
         through: :pinboard,
-        source: :board
+        source: :board,
+        dependent: :destroy
 end

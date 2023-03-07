@@ -33,7 +33,7 @@ export default function PinShow() {
         return null
     }else{
     return (
-        <div className='show-page'>
+        <div className='show-page' style={{paddingTop:'90px'}}>
             <div className='show-wrapper'>
                 
                 <div className='show-image-wrapper'>

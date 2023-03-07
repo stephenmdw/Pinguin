@@ -33,7 +33,8 @@ class Pin < ApplicationRecord
         source: :board,
         dependent: :destroy
 
-    has_one_attached :photo
+    has_one_attached :photo,
+        dependent: :destroy
 
     def ensure_photo
         unless self.photo.attached?

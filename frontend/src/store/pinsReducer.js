@@ -21,7 +21,6 @@ export const removePin = (pinId) => ({
 
 //selectors
 export const getPin = (pinId) => (state) => {
-    console.log(state)
     return state.pins ? state.pins[pinId] : null
 }
 
@@ -67,6 +66,7 @@ export const updatePin = pin => async dispatch => {
         method: "PATCH",
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(pin)
+        // body: pin
     })
 
     if(res.ok) {

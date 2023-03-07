@@ -1,7 +1,13 @@
 class Api::UsersController < ApplicationController
   before_action :require_logged_out, only: [:create]
-  before_action :require_logged_in, only: [:show]
+  # before_action :require_logged_in, only: [:show]
   wrap_parameters include: User.attribute_names + ['password']
+
+
+  # def index 
+  #   @users = User.all
+  #   render :index
+  # end
 
   def create
     @user = User.new(user_params)
@@ -13,10 +19,11 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  # def show
-  #   @user = User.find(params[:id])
-  #   render :show
-  # end
+  def show
+    # debugger
+    @user = User.find_by(id: params[:id])
+    render :show
+  end
 
   private
 

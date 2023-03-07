@@ -13,15 +13,20 @@ export const removeUser = (userId) => ({
     userId
 });
 
+export const getUsers = state => {
+    return state.users ? Object.values(state.users) : []
+}
+
 export const getUser = (userId) => (state) => {
+    console.log(state) //state is returning an empty user state
     return state.users ? state.users[userId] : null
 }
 
-export const fetchUser = (user) => async dispatch => {
-    let res = await fetch(`users/${user.id}`)
+export const fetchUser = (userId) => async dispatch => {
+    let res = await fetch(`/api/users/${userId}`)
 
     if(res.ok) {
-        let fetchedUser = res.json()
+        let fetchedUser = await res.json()
         dispatch(receiveUser(fetchedUser))
     }
 }
@@ -53,8 +58,8 @@ export const signupUser = user => async dispatch => {
         body: JSON.stringify(user)
     });
     let data = await res.json();
-    sessionStorage.setItem("currentUser", JSON.stringify(data.user))
-    dispatch(receiveUser(data.user))
+    sessionStorage.setItem("currentUser", JSON.stringify(data))
+    dispatch(receiveUser(data))
 }
 
 

@@ -39,25 +39,32 @@
       }) 
     end
 
+    puts "Creating boards..."
+
     #Seed boards
     Board.create({title: "I don't know", user_id: 1})
     Board.create({title: "Cool photos", user_id: 5})
     Board.create({title: "Tahoe board", user_id: 4})
 
+    
+    puts "Creating pins..."
+    pins = []
     #Seed pins
-    Pin.create!({title: "a cool picture", description: "my new pic", user_id: 2})
-    Pin.create!({title: "my new painting", description: "van gogh", user_id: 3})
-    Pin.create!({title: "snowboarding picture", description: "at palisades", user_id: 4})
-    Pin.create!({title: "the snowy mountains", description: "northstar sucks", user_id: 4})
-    Pin.create!({title: "Lake Tahoe", description: "the water looks cold", user_id: 4})
-    Pin.create!({title: "my new car", description: "love the PT cruiser", user_id: 5})
-    Pin.create!({title: "A cool infographic", description: "Hope this hels", user_id: 6})
-    Pin.create!({title: "A new pin", description: "I can't think of new titles", user_id: 7})
-    Pin.create!({title: "A new pin part 2", description: "I need to make more pins", user_id: 8})
-    Pin.create!({title: "A new pin part 3", description: "What do i put here", user_id: 9})
-    Pin.create!({title: "A new pin part 4", description: "this is a pin", user_id: 2})
-    Pin.create!({title: "A new pin part 5", description: "this is another pin", user_id: 11})
+    pins << Pin.new({title: "a cool picture", description: "my new pic", user_id: 2})
+    pins << Pin.new({title: "my new painting", description: "van gogh", user_id: 3})
+    pins << Pin.new({title: "snowboarding picture", description: "at palisades", user_id: 4})
+    pins << Pin.new({title: "the snowy mountains", description: "northstar sucks", user_id: 4})
+    pins << Pin.new({title: "Lake Tahoe", description: "the water looks cold", user_id: 4})
+    pins << Pin.new({title: "my new car", description: "love the PT cruiser", user_id: 5})
+    pins << Pin.new({title: "A cool infographic", description: "Hope this hels", user_id: 6})
+    pins << Pin.new({title: "A new pin", description: "I can't think of new titles", user_id: 7})
+    pins << Pin.new({title: "A new pin part 2", description: "I need to make more", user_id: 8})
+    pins << Pin.new({title: "A new pin part 3", description: "What do i put here", user_id: 9})
+    pins << Pin.new({title: "A new pin part 4", description: "this is a pin", user_id: 2})
+    pins << Pin.new({title: "A new pin part 5", description: "this is another pin", user_id: 11})
 
+
+    puts "Linking pins and boards"
     #pinboard
     Pinboard.create({board_id: 1, pin_id: 1})
     Pinboard.create({board_id: 2, pin_id: 2})
@@ -67,9 +74,9 @@
     Pinboard.create({board_id: 1, pin_id: 6})
     Pinboard.create({board_id: 2, pin_id: 7})
 
+    puts "Attaching photos to pins..."
 
-
-    Pin.first(12).each_with_index do |pin, index|
+    pins.each_with_index do |pin, index|
       pin.photo.attach(
         # The string passed to URI.open should be the URL of the image in its bucket.
         # This sample assumes the bucket name is `benchbnb-seeds`.
@@ -78,6 +85,9 @@
 
         filename: "pin_#{index + 1}.jpeg"
       )
+      
+      pin.save!
+
     end
 
     # https://pinguin-seeds.s3.us-west-1.amazonaws.com/pin_1.jpeg

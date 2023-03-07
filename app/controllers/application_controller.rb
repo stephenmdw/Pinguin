@@ -24,6 +24,8 @@ class ApplicationController < ActionController::API
     end
 
     def require_logged_out
+        # debugger
+
         if logged_in?
             render json: {errors: ["Must be logged out"]}, status: 403
         end

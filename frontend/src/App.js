@@ -10,6 +10,7 @@ import LoggedOutHome from "./components/LoggedOutHome/LoggedOutHome";
 import PinShow from "./components/Pins/PinShow";
 import UserShow from "./components/User/UserShow";
 import { useHistory } from "react-router-dom";
+import BoardIndex from "./components/Boards/BoardIndex";
 function App() {
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory()
@@ -31,9 +32,19 @@ function App() {
            */}
             {requireLogIn(<PinShow/>)}
         </Route>
-        <Route path="/users/:userId">
+        <Route path="/users/:userId/:boardType">
           {/* <UserShow/> */}
           {requireLogIn(<UserShow/>)}
+        </Route>
+        <Route path="/users/:userId/">
+          {/* <UserShow/> */}
+          {requireLogIn(<UserShow/>)}
+        </Route>
+        <Route path="/board/:boardId">
+          {/* <BoardShow/> */}
+        </Route>
+        <Route path="/board-builder">
+          {/* <BoardCreate/> */}
         </Route>
         <Route path="/">
           {sessionUser ? <PinIndex/> : <LoggedOutHome/>}

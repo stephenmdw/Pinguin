@@ -1,5 +1,5 @@
 class Api::BoardsController < ApplicationController
-    before_action :require_logged_in, only: [:index, :create, :destroy, :update]
+    # before_action :require_logged_in, only: [:index, :create, :destroy, :update]
     
     def index
         # debugger

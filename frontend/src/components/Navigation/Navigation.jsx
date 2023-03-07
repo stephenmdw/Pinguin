@@ -19,7 +19,7 @@ function Navigation() {
     let initial = username.slice(0,1)
     sessionLinks = (
       <div className='profile-and-session'>
-        <NavLink className='user-link' to={`users/${sessionUser.id}`}>
+        <NavLink className='user-link' to={`/users/${sessionUser.id}`}>
           <div className='user-link-initial'>{initial}</div>
         </NavLink>
         <ProfileButton user={sessionUser} />

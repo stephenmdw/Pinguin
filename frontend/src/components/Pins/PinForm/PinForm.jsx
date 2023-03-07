@@ -74,10 +74,15 @@ export default function PinForm() {
     if (!sessionUser) {
         return null
     } else {
+        let username = sessionUser.username
+        let initial = username.slice(0,1)
         return (
             <div className='pin-form-page'>
+                
                 <form onSubmit={handleSubmit} className="pin-form">
+
                     <div className='pin-form-wrapper'>
+
                         <div className='submit-bar'>
                             <div className="dotdotdot">
                                 <RemoveContent
@@ -97,13 +102,24 @@ export default function PinForm() {
                                 <input className="save-input" type="submit" value="Save" />
                             </div>
                         </div>
+
+
                         <div className='input-area-wrapper'>
                             <div className="image-upload-area">
-                                <div><input
-                                    type="file"
-                                    className="image-upload-button"
-                                    onChange={handleFile}></input>
-                                    <div className={preview ? 'preview-photo' : ''}>{preview}</div>
+                                <div className='image-upload'>
+                                    { preview ? <div className="preview-photo"> {preview} </div> : 
+                                        <div className='image-upload-button-wrapper'>
+                                            <div className="image-upload-background"/>
+                                                    <div className="image-upload-dashed">
+                                                        <div className='image-upload-icon-text'><div className='image-upload-icon'/>Drag and drop or click to  <br/>upload</div>
+                                                </div>
+                                                <input
+                                                    title=' '
+                                                    type="file" 
+                                                    className="image-upload-button"
+                                                    onChange={handleFile}></input>
+                                        </div>
+                                        }
                                 </div>
                                 <div className='save-from-site-div'><input className='save-from-site-button' type="text" placeholder="Save from site"></input></div>
                             </div>
@@ -119,8 +135,8 @@ export default function PinForm() {
                                     </input>
                                     <div>
                                         <div></div>
-                                        <div >
-                                            <p className="pin-form-current-user">{sessionUser.username}</p>
+                                        <div className='current-user-graphic'>
+                                            <div className='initial-graphic-pinform'>{initial}</div><p className="pin-form-current-user">{sessionUser.username}</p>
                                         </div>
                                     </div>
                                     <input
