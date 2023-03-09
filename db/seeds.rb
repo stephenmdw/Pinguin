@@ -1,4 +1,4 @@
-# require 'open-uri'
+require 'open-uri'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -85,6 +85,7 @@
     puts "Attaching photos to pins..."
 
     pins.each_with_index do |pin, index|
+
       pin.photo.attach(
         # The string passed to URI.open should be the URL of the image in its bucket.
         # This sample assumes the bucket name is `benchbnb-seeds`.
@@ -93,7 +94,7 @@
 
         filename: "pin_#{index + 1}.jpeg"
       )
-      
+      puts "saving pin #{index + 1}"
       pin.save!
 
     end

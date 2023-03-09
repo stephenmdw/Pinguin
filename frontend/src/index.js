@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 import { signupUser } from './store/usersReducer';
 import configureStore from './store/index'
 import { BrowserRouter } from 'react-router-dom';
-import { restoreSession } from './store/csrf';
 import * as sessionActions from './store/session'
+import { restoreSession } from './store/csrf';
 import { ModalProvider } from './context/Modal';
 import { BoardModalProvider } from './context/BoardModal';
 
@@ -28,10 +28,10 @@ window.signupUser = signupUser;
 
 // }
 
-// const initializeApp = () => {
+const initializeApp = () => {
   let currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
   let initialState = {};
-  
+
   // if (currentUser) {
   //   initialState = {
   //     users: {
@@ -39,16 +39,16 @@ window.signupUser = signupUser;
   //     }
   //   }
   // }
-  
-  function Root(){
+
+  function Root() {
     return (
       <ModalProvider>
         <BoardModalProvider>
-        <Provider store={store}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </Provider>
+          <Provider store={store}>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </Provider>
         </BoardModalProvider>
       </ModalProvider>
     )
@@ -66,22 +66,21 @@ window.signupUser = signupUser;
   const renderApplication = () => {
     ReactDOM.render(
       <React.StrictMode>
-          <Root/>
+        <Root />
       </React.StrictMode>,
-    document.getElementById('root')
+      document.getElementById('root')
     );
   }
 
   if (
     sessionStorage.getItem("currentUser") === null ||
-    sessionStorage.getItem("X-CSRF-Token") === null 
+    sessionStorage.getItem("X-CSRF-Token") === null
   ) {
-    store.dispatch(sessionActions.restoreSession()).then(renderApplication);
+    store.dispatch(restoreSession()).then(renderApplication);
   } else {
     renderApplication();
   }
+}
 
-// }
 
-
-// restoreSession().then(initializeApp);
+restoreSession().then(initializeApp);

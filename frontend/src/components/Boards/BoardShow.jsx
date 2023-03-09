@@ -41,23 +41,26 @@ export default function BoardShow() {
         return null
     } else {
 
-    if(user){
-    }
-    
-    if (!user || !board || !pins){
-        return null 
-    } else {
-        let initial = user.username.slice(0,1).toUpperCase()
-        return (
-            
-            <div style={{ paddingTop: '80px' }}>
-                <div className='boardpin-header-wrapper'>
-                    <div className="boardpin-title">{board.title}</div>
-                    <div className='user-board-icon'>{initial}</div>
+        if (user) {
+        }
+
+        if (!user || !board || !pins) {
+            return null
+        } else {
+            let initial = user.username.slice(0, 1).toUpperCase()
+            return (
+
+                <div style={{ paddingTop: '80px' }}>
+                    <div className='boardpin-header-wrapper'>
+                        <div className="boardpin-title">{board.title}</div>
+                        <div className='user-board-icon'>{initial}</div>
+                    </div>
+                    <div className='boardpin-pincounter'>{pins.length} Pins</div>
+                    <div className="boardpin-index-wrapper">
+                        <div className='boardpin-index'>{pins.map((pin) => <PinIndexItem pin={pin} />)}</div>
+                    </div>
                 </div>
-                <div className='boardpin-pincounter'>{pins.length} Pins</div>
-                <div className='boardpin-index'>{pins.map((pin) => <PinIndexItem pin={pin} />)}</div>
-            </div>
-        )}
+            )
+        }
     }
 }

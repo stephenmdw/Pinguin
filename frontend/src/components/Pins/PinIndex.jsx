@@ -15,7 +15,7 @@ export default function PinIndex() {
     return (
         <div className='pin-index-wrapper'>
         <div className='pin-index'>
-            {pins.map((pin) => <PinIndexItem pin={pin}/>)}
+            {pins.map((pin) => <PinIndexItem pin={pin} key={pin.id}/>)}
 
         </div>
         </div>

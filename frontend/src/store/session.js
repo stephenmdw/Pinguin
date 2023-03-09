@@ -26,14 +26,14 @@ const storeCurrentUser = user => {
     else { sessionStorage.removeItem("currentUser"); }
 }
 
-export const restoreSession = () => async dispatch => {
-    const response = await csrfFetch("/api/session");
-    storeCSRFToken(response);
-    const data = await response.json();
-    storeCurrentUser(data);
-    dispatch(setCurrentUser(data));
-    return response;
-};
+// export const restoreSession = () => async dispatch => {
+//     const response = await csrfFetch("/api/session");
+//     storeCSRFToken(response);
+//     const data = await response.json();
+//     storeCurrentUser(data.user);
+//     dispatch(setCurrentUser(data.user));
+//     return response;
+// };
 
 export const login = ({ credential, password }) => async dispatch => {
     const response = await csrfFetch("/api/session", {
@@ -85,7 +85,7 @@ export default function sessionReducer(state = initialState, action) {
     switch (action.type) {
         case SET_CURRENT_USER:
             console.log('1:', action.payload)
-            return { ...state, user: action.payload }
+            return { user: action.payload.user }
         case REMOVE_CURRENT_USER:
             console.log('2:')
             return { user: null }
