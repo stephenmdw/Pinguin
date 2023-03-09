@@ -64,10 +64,10 @@ window.signupUser = signupUser;
   // );
 
   const renderApplication = () => {
-  ReactDOM.render(
-    <React.StrictMode>
-        <Root/>
-    </React.StrictMode>,
+    ReactDOM.render(
+      <React.StrictMode>
+          <Root/>
+      </React.StrictMode>,
     document.getElementById('root')
     );
   }

@@ -6,7 +6,7 @@ export const REMOVE_CURRENT_USER = 'session/removeCurrentUser'
 const setCurrentUser = (payload) => {
     return {
         type: SET_CURRENT_USER,
-        payload: payload.user
+        payload: payload
     };
 };
 
@@ -51,14 +51,18 @@ export const logout = () => async (dispatch) => {
     const response = await csrfFetch("/api/session", {
         method: "DELETE"
     });
-    storeCurrentUser(null);
-    dispatch(removeCurrentUser());
+
+    if(response.ok){
+        storeCurrentUser(null);
+        dispatch(removeCurrentUser());
+    }
     return response;
 };
 
 
 const initialState = {
     user: sessionStorage.getItem("currentUser") ? JSON.parse(sessionStorage.getItem("currentUser")) : null
+    // user: JSON.parse(sessionStorage.getItem("currentUser"))
 };
 
 export const signup = (user) => async (dispatch) => {
@@ -80,10 +84,13 @@ export default function sessionReducer(state = initialState, action) {
     let newState = { ...state }
     switch (action.type) {
         case SET_CURRENT_USER:
-            return action.payload 
+            console.log('1:', action.payload)
+            return { ...state, user: action.payload }
         case REMOVE_CURRENT_USER:
-            return null 
+            console.log('2:')
+            return { user: null }
         default:
+            console.log('3')
             return state;
     }
 }

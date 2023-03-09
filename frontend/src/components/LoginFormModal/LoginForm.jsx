@@ -13,7 +13,7 @@ const [errors, setErrors] = useState([]);
 const setShowLoginModal = props.setShowLoginModal
 const setShowSignUpModal = props.setShowSignUpModal
 
-if (sessionUser) return <Redirect to="/" />;
+if (sessionUser.user) return <Redirect to="/" />;
 
 const demoLogin = (e) => {
     e.preventDefault()

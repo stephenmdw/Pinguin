@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
-  console.log(sessionUser)
+  console.log('sessionUser:', sessionUser)
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
