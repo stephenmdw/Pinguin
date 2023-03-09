@@ -35,7 +35,7 @@ export function BoardModal({ onClose, children, buttonPosition }) {
             top: toppos,
             // left: leftpos
             
-          }}>
+        }}>
         <div id="board-modal-background" onClick={onClose} />
         <div id="board-modal-content">
             {children}

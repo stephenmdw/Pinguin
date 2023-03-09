@@ -7,8 +7,9 @@ import { useParams, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import PinUserIndex from '../Pins/PinUserIndex';
 import BoardDropdownModal from '../Boards/BoardAdd';
-import BoardForm from '../Boards/BoardForm';
-
+import BoardForm from '../Boards/CreateBoard/BoardForm';
+import { BoardCreateModal } from '../../context/Modal';
+import BoardCreate from '../Boards/CreateBoard';
 export default function UserShow() {
     const dispatch = useDispatch()
 
@@ -72,6 +73,7 @@ export default function UserShow() {
                 <div className='plus-button-wrapper'>
                     <div className='plus-button'>
                         <h1 onClick={createBoard}>+</h1>
+                        <BoardCreate/>
                     </div>
                 </div>
                     {createdOrSaved()}

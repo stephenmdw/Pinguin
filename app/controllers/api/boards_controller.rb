@@ -1,6 +1,7 @@
 class Api::BoardsController < ApplicationController
     # before_action :require_logged_in, only: [:index, :create, :destroy, :update]
-    
+    wrap_parameters include: Board.attribute_names + ['userId']
+
     def index
         # debugger
         @boards = Board.all
@@ -14,11 +15,10 @@ class Api::BoardsController < ApplicationController
 
     def create
         @board = Board.new(board_params)
-        if @board
-            @board.save
+        if @board.save!
             render :show
         else
-            render json: {error: "Board must include a title"}
+            render json: {error: "Board must include a title"}, status: 422
         end
     end
     
@@ -39,7 +39,7 @@ class Api::BoardsController < ApplicationController
     private 
 
     def board_params
-        params.require(:board).permit(:title, :description, :secret, :user_id)
+        params.require(:board).permit(:title, :secret, :user_id)
         #do I add created at/updated at
     end
 end

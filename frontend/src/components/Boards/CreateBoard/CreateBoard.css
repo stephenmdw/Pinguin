@@ -1,0 +1,39 @@
+.board-create-modal {
+    background-color: white;
+    height: 392px;
+    width: 540px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.create-board-header-wrapper {
+    width: 492px;
+}
+
+.create-board-header {
+    text-align: center;
+    font-weight: 600;
+    padding: 60px 0px;
+    letter-spacing: 1.5px;
+    font-size: 28px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.create-board-form {
+    padding: 0px 32px;
+    flex: 1; /* fill the remaining space */
+    min-height: 0; /* optional */
+    overflow: auto; /* overflow if exceeds available space */
+}
+
+
+.create-board-footer {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.create-board-button-submit {
+    
+}
