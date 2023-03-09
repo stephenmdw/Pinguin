@@ -3,10 +3,10 @@ import csrfFetch from "./csrf.js";
 export const SET_CURRENT_USER = 'session/setCurrentUser'
 export const REMOVE_CURRENT_USER = 'session/removeCurrentUser'
 
-const setCurrentUser = (user) => {
+const setCurrentUser = (payload) => {
     return {
         type: SET_CURRENT_USER,
-        payload: user
+        payload: payload.user
     };
 };
 
@@ -42,8 +42,8 @@ export const login = ({ credential, password }) => async dispatch => {
     });
     const data = await response.json();
     // debugger
-    storeCurrentUser(data);
-    dispatch(setCurrentUser(data));
+    storeCurrentUser(data.user);
+    dispatch(setCurrentUser(data.user));
     return response;
 };
 
@@ -80,9 +80,9 @@ export default function sessionReducer(state = initialState, action) {
     let newState = { ...state }
     switch (action.type) {
         case SET_CURRENT_USER:
-            return { ...state, user: action.payload }
+            return action.payload 
         case REMOVE_CURRENT_USER:
-            return { ...state, user: null }
+            return null 
         default:
             return state;
     }

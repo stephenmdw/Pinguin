@@ -27,44 +27,44 @@ export default function PinIndexItem({ pin }) {
     }    
 
     return (
-        <div style={{paddingBottom:'16px'}}>
-        <div className='pin-index-item-large' onClick={handleClick}  onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}>
-            {isHovered &&
-                <div className="save-button">
-                    <BoardDropdownModal pin={pin} />
-                </div>}
-              
+            <div style={{paddingBottom:'16px'}}>
+            <div className='pin-index-item-large' onClick={handleClick}  onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}>
+                {isHovered &&
+                    <div className="save-button">
+                        <BoardDropdownModal pin={pin} />
+                    </div>}
+                
 
-            <img
-                className='index-image'                    
-                src={pin.photoUrl}
-                style={{
-                    backgroundColor: 'white',
-                    borderRadius: '16px',
-                    width: '100%',
-                    height: 'auto',
-                    maxHeight: '420px',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                    // position: 'absolute'
-                }}>
-            </img>
+                <img
+                    className='index-image'                    
+                    src={pin.photoUrl}
+                    style={{
+                        backgroundColor: 'white',
+                        borderRadius: '16px',
+                        width: '100%',
+                        height: 'auto',
+                        maxHeight: '420px',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                        // position: 'absolute'
+                    }}>
+                </img>
 
-            {sessionUser.id == pin.userId ?
-                    isHovered && 
-                        <div className='edit-button-modal-index'>
-                            <PinEditModal pin={pin} />
-                        </div> 
-                    : <></>}
+                {sessionUser.id == pin.userId ?
+                        isHovered && 
+                            <div className='edit-button-modal-index'>
+                                <PinEditModal pin={pin} />
+                            </div> 
+                        : <></>}
 
-            {/* </div> */}
-            {/* <h1>{pin.title}</h1>
-                    <p>{pin.description}</p>
-                    <p>{pin.altText}</p>
-                    <p>{pin.destinationLink}</p> */}
-        </div>
-        </div>
+                {/* </div> */}
+                {/* <h1>{pin.title}</h1>
+                        <p>{pin.description}</p>
+                        <p>{pin.altText}</p>
+                        <p>{pin.destinationLink}</p> */}
+            </div>
+            </div>
     )
 }
 
