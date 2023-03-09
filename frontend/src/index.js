@@ -10,6 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { restoreSession } from './store/csrf';
 import * as sessionActions from './store/session'
 import { ModalProvider } from './context/Modal';
+import { BoardModalProvider } from './context/BoardModal';
 
 // window.loginUser = loginUser;
 // window.logoutUser = logoutUser;
@@ -42,11 +43,13 @@ window.signupUser = signupUser;
   function Root(){
     return (
       <ModalProvider>
+        <BoardModalProvider>
         <Provider store={store}>
           <BrowserRouter>
             <App />
           </BrowserRouter>
         </Provider>
+        </BoardModalProvider>
       </ModalProvider>
     )
   }

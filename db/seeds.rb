@@ -42,37 +42,32 @@
     puts "Creating boards..."
 
     #Seed boards
-    Board.create({title: "I don't know", user_id: 1})
+    Board.create({title: "Ideas", user_id: 1})
     Board.create({title: "Cool photos", user_id: 5})
     Board.create({title: "Tahoe board", user_id: 4})
-
+    Board.create({title: "Penguins", user_id: 1})
     
     puts "Creating pins..."
     pins = []
     #Seed pins
     pins << Pin.new({title: "a cool picture", description: "my new pic", user_id: 2})
-    pins << Pin.new({title: "my new painting", description: "van gogh", user_id: 3})
-    pins << Pin.new({title: "snowboarding picture", description: "at palisades", user_id: 4})
-    pins << Pin.new({title: "the snowy mountains", description: "northstar sucks", user_id: 4})
-    pins << Pin.new({title: "Lake Tahoe", description: "the water looks cold", user_id: 4})
-    pins << Pin.new({title: "my new car", description: "love the PT cruiser", user_id: 5})
-    pins << Pin.new({title: "A cool infographic", description: "Hope this hels", user_id: 6})
+    pins << Pin.new({title: "Penguin wallpaper", description: "Made a cute penguin wallpaper", user_id: 3})
+    pins << Pin.new({title: "Dark picture of the city", description: "Couldn't figure out how to use flash", user_id: 4})
+    pins << Pin.new({title: "Monterey shore", description: "The weather was terrible", user_id: 4})
+    pins << Pin.new({title: "I love the snow", description: "But I hate the cold", user_id: 2})
+    pins << Pin.new({title: "Beautiful ocean rock thing", description: "Blue ass water", user_id: 5})
+    pins << Pin.new({title: "Green hilly background", description: "Took this photo with a drone", user_id: 6})
     pins << Pin.new({title: "A new pin", description: "I can't think of new titles", user_id: 7})
     pins << Pin.new({title: "A new pin part 2", description: "I need to make more", user_id: 8})
     pins << Pin.new({title: "A new pin part 3", description: "What do i put here", user_id: 9})
     pins << Pin.new({title: "A new pin part 4", description: "this is a pin", user_id: 2})
     pins << Pin.new({title: "A new pin part 5", description: "this is another pin", user_id: 11})
-
-
-    puts "Linking pins and boards"
-    #pinboard
-    Pinboard.create({board_id: 1, pin_id: 1})
-    Pinboard.create({board_id: 2, pin_id: 2})
-    Pinboard.create({board_id: 3, pin_id: 3})
-    Pinboard.create({board_id: 3, pin_id: 4})
-    Pinboard.create({board_id: 2, pin_id: 5})
-    Pinboard.create({board_id: 1, pin_id: 6})
-    Pinboard.create({board_id: 2, pin_id: 7})
+    pins << Pin.new({title: "Penguin just chilling", description: "He looks so relaxed", user_id: 1})
+    pins << Pin.new({title: "A baby penguin", description: "Looks like the logo", alt_text: "baby penguin sitting on snow", user_id: 1})
+    pins << Pin.new({title: "Two penguins together :)", description: "Cute mfs", user_id: 1})
+    pins << Pin.new({title: "How big do penguins get?- Smithsonian", description: "This shows how big different penguins can get", alt_text: "diagram of how big penguins get", destination_link: "https://ocean.si.edu/ocean-life/seabirds/how-big-do-penguins-get", user_id: 1})
+    pins << Pin.new({title: "Penguins dreaming of flying", description: "Their dream is to take to the skies", alt_text: "Two penguins looking up", user_id: 1})
+    pins << Pin.new({title: "Cute penguin wallpaper", description: "Stole this wallpaper, but I'm going to say I made it", user_id: 10})
 
     puts "Attaching photos to pins..."
 
@@ -89,6 +84,32 @@
       pin.save!
 
     end
+
+    puts "Linking pins and boards"
+    #pinboard
+    Pinboard.create!({board_id: 1, pin_id: 1})
+    Pinboard.create!({board_id: 1, pin_id: 2})
+    Pinboard.create!({board_id: 1, pin_id: 3})
+    Pinboard.create!({board_id: 1, pin_id: 4})
+    Pinboard.create!({board_id: 1, pin_id: 5})
+    Pinboard.create!({board_id: 1, pin_id: 6})
+
+    Pinboard.create!({board_id: 2, pin_id: 2})
+    Pinboard.create!({board_id: 2, pin_id: 5})
+    Pinboard.create!({board_id: 2, pin_id: 7})
+    
+    Pinboard.create!({board_id: 3, pin_id: 3})
+    Pinboard.create!({board_id: 3, pin_id: 4})
+    Pinboard.create!({board_id: 3, pin_id: 7})
+    Pinboard.create!({board_id: 3, pin_id: 5})
+
+    Pinboard.create!({board_id: 4, pin_id: 2})
+    Pinboard.create!({board_id: 4, pin_id: 13})
+    Pinboard.create!({board_id: 4, pin_id: 14})
+    Pinboard.create!({board_id: 4, pin_id: 15})
+    Pinboard.create!({board_id: 4, pin_id: 16})
+    Pinboard.create!({board_id: 4, pin_id: 17})
+    Pinboard.create!({board_id: 4, pin_id: 18})
 
     # https://pinguin-seeds.s3.us-west-1.amazonaws.com/pin_1.jpeg
 

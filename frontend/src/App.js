@@ -1,7 +1,5 @@
 import React from "react";
 import { Route, Switch } from 'react-router-dom'
-import LoginFormPage from "./components/LoginFormModal/LoginForm";
-import SignupFormPage from "./components/SignUpFormModal/SignUpForm.jsx";
 import Navigation from "./components/Navigation/Navigation.jsx";
 import PinForm from "./components/Pins/PinForm/PinForm";
 import { useSelector } from "react-redux"
@@ -10,7 +8,11 @@ import LoggedOutHome from "./components/LoggedOutHome/LoggedOutHome";
 import PinShow from "./components/Pins/PinShow";
 import UserShow from "./components/User/UserShow";
 import { useHistory } from "react-router-dom";
-import BoardIndex from "./components/Boards/BoardIndex";
+import BoardShow from "./components/Boards/BoardShow";
+// import BoardIndex from "./components/Boards/BoardIndex";
+// import LoginFormPage from "./components/LoginFormModal/LoginForm";
+// import SignupFormPage from "./components/SignUpFormModal/SignUpForm.jsx";
+
 function App() {
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory()
@@ -32,6 +34,10 @@ function App() {
            */}
             {requireLogIn(<PinShow/>)}
         </Route>
+        <Route path="/users/:userId/boards/:boardId">
+          <BoardShow/>
+          {/* {requireLogIn(<BoardShow/>)} */}
+        </Route>
         <Route path="/users/:userId/:boardType">
           {/* <UserShow/> */}
           {requireLogIn(<UserShow/>)}
@@ -39,9 +45,6 @@ function App() {
         <Route path="/users/:userId/">
           {/* <UserShow/> */}
           {requireLogIn(<UserShow/>)}
-        </Route>
-        <Route path="/board/:boardId">
-          {/* <BoardShow/> */}
         </Route>
         <Route path="/board-builder">
           {/* <BoardCreate/> */}

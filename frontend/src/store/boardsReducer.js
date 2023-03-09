@@ -9,9 +9,9 @@ const receiveBoards = (boards) => ({
     boards
 })
 
-const receiveBoard = (board) => ({
+const receiveBoard = (payload) => ({
     type: RECEIVE_BOARD,
-    board
+    payload
 })
 
 const removeBoard = (boardId) => ({
@@ -36,8 +36,8 @@ export const fetchBoards = () => async dispatch => {
     }
 }
 
-export const fetchBoard = (board) => async dispatch => {
-    let res = await csrfFetch(`/api/boards/${board.id}`)
+export const fetchBoard = (boardId) => async dispatch => {
+    let res = await csrfFetch(`/api/boards/${boardId}`)
 
     if(res.ok) {
         let board = await res.json()
@@ -87,7 +87,8 @@ export default function boardsReducer(state={}, action) {
         case RECEIVE_BOARDS:
             return action.boards
         case RECEIVE_BOARD:
-            let board = action.board
+            let board = action.payload.board
+            // console.log('action.board:', action.payload.board)
             newState[board.id] = board
             return newState
         case REMOVE_BOARD:

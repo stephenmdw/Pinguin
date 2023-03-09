@@ -5,56 +5,65 @@ import { useParams } from 'react-router-dom';
 import PinEditModal from './PinEdit';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-
+import { useEffect, useState } from 'react';
+import BoardDropdownModal from '../Boards/BoardAdd';
+import React from 'react';
 
 export default function PinIndexItem({ pin }) {
     let spacer = document.getElementsByClassName('random-spacer')
     let randHeight = Math.random()
-    const {userId} = useParams()
+    const { userId } = useParams()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user);
 
-    let img = placeHolderImg
+    const [isHovered, setIsHovered] = useState(false);
+
     // spacer.style.setProperty('height', randHeight)
     function handleClick(e) {
         e.preventDefault()
-        console.log(e.target.className)
-        if(e.target.className === 'hover-overlay') {
+        if (e.target.className === 'index-image') {
             history.push(`/pin/${pin.id}`)
         }
-    }
-    //want the random-spacer div to give it a random height 
+    }    
 
     return (
-        <div className="random-spacer">
-            <div className="pin-index-item">
+        <div style={{paddingBottom:'16px'}}>
+        <div className='pin-index-item-large' onClick={handleClick}  onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}>
+            {isHovered &&
+                <div className="save-button">
+                    <BoardDropdownModal pin={pin} />
+                </div>}
+              
 
-                <div onClick={handleClick} className='index-item-image'
-                        style={{
-                        backgroundImage: `url(${pin.photoUrl})`,
-                        // backgroundColor:'black',
-                        borderRadius:'16px',
-                        width:'100%',
-                        height:'100%',
-                        backgroundRepeat:'no-repeat',
-                        backgroundSize:'cover'
-                        }}>
-                    <div className="hover-overlay">
-                        <div className="save-button-">
-                            
-                        </div>
-                        {sessionUser.id == pin.userId ? 
-                        <div className='edit-button-modal-index'><PinEditModal
-                        pin={pin}/></div>
-                        : <></>}
-                    </div>
-                </div>
-                {/* <h1>{pin.title}</h1>
-                <p>{pin.description}</p>
-                <p>{pin.altText}</p>
-                <p>{pin.destinationLink}</p> */}
+            <img
+                className='index-image'                    
+                src={pin.photoUrl}
+                style={{
+                    backgroundColor: 'white',
+                    borderRadius: '16px',
+                    width: '100%',
+                    height: 'auto',
+                    maxHeight: '420px',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
+                    // position: 'absolute'
+                }}>
+            </img>
 
-            </div>
+            {sessionUser.id == pin.userId ?
+                    isHovered && 
+                        <div className='edit-button-modal-index'>
+                            <PinEditModal pin={pin} />
+                        </div> 
+                    : <></>}
+
+            {/* </div> */}
+            {/* <h1>{pin.title}</h1>
+                    <p>{pin.description}</p>
+                    <p>{pin.altText}</p>
+                    <p>{pin.destinationLink}</p> */}
+        </div>
         </div>
     )
 }

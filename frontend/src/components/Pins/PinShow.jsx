@@ -7,10 +7,8 @@ import './PinShow.css'
 export default function PinShow() {
     const dispatch = useDispatch()
     const { pinId } = useParams()
-    console.log(pinId)
 
     const pin = useSelector(getPin(pinId))
-    console.log(pin)
 
     const sessionUser = useSelector(state => state.session.user);
     let userId = sessionUser.id
@@ -18,16 +16,6 @@ export default function PinShow() {
     useEffect(() => {
         dispatch(fetchPin(pinId))
     }, [dispatch, pinId])
-
-    function editButton () {
-        return (
-            <div>
-            </div>
-        )
-    }
-
-
-
 
     if (!pin){
         return null
@@ -48,7 +36,10 @@ export default function PinShow() {
                         </div>
                     </div>
                     <div>
-                        <h1 className='show-pin-title'>{pin.title}</h1>
+                        {pin.destinationLink}
+                    </div>
+                    <div style={{height: '50px'}}>
+                        <h2 className='show-pin-title'>{pin.title}</h2>
                     </div>
                     <div>
                         {pin.description}

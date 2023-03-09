@@ -8,7 +8,7 @@
 
 .user-icon {
     display: flex;
-    background-color: #ddd;
+    background-color: #efefef;
     height: 120px;
     width: 120px;
     align-items: center;    
@@ -40,5 +40,73 @@
     font-weight: 600;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.user-show-create-div {
+    padding: 8px;
+}
+
+.user-show-create-div:hover {
+    background-color: #E9E9E9;
+    border-radius: 10px;
+}
+
+.user-show-saved-div {
+    padding: 8px;
+}
+
+.user-show-saved-div:hover {
+    background-color: #E9E9E9;
+    border-radius: 10px;
+}
+
+
+.user-show-saved {
+    text-decoration: none;
+    color: black;
+    padding-bottom: 10px;
+}
+
+.user-show-saved:hover {
+}
+
+.user-show-saved:focus {
+    border-bottom-width: 3px;
+    border-color: black;
+    border-bottom-style: solid;
+}
+
+.user-show-created {
+    text-decoration: none;
+    color: black;
+    padding-bottom: 10px;
+}
+
+.user-show-created:focus{ 
+    border-bottom-width: 3px;
+    border-color: black;
+    border-bottom-style: solid;
+}
+
+.plus-button-wrapper {
+    display: flex;
+    justify-content: right;
+    padding-right: 50px;
+}
+
+.plus-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight:600;
+    width: 30px;
+    /* text-align: center; */
+    border-radius: 30px;
+}
+
+.plus-button:hover {
+    background-color: #efefef
 }

@@ -47,9 +47,7 @@ const handleSubmit = (e) => {
     <form onSubmit={handleSubmit} className="login-form">
         <div className="login-pinguin-logo"></div>
         <h1 className="login-header">Welcome to Pinguin</h1>
-        <ul>
-        {errors.map(error => <li className="login-error" key={error}>{error}</li>)}
-        </ul>
+       
         <div className="login-form-wrapper">
         <label className="login-label">Username
         <input

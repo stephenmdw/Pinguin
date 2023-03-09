@@ -12,26 +12,19 @@
 #  updated_at       :datetime         not null
 #
 class Pin < ApplicationRecord
-    validates :user_id, :title, presence: true
+    validates :title, presence: true
     validate :ensure_photo
 
     belongs_to :user,
         foreign_key: :user_id,
         class_name: :User
 
-    # has_many :boards,
-    #     through: :user,
-    #     source: :boards
-
-    has_many :pinboard,
-        foreign_key: :pin_id,
-        class_name: :Pinboard,
+    has_many :pinboards,
         dependent: :destroy
 
     has_many :boards,
-        through: :pinboard,
-        source: :board,
-        dependent: :destroy
+        through: :pinboards
+
 
     has_one_attached :photo,
         dependent: :destroy

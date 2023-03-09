@@ -2,11 +2,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import './UserShow.css'
 import { useEffect } from 'react';
 import BoardIndex from '../Boards/BoardIndex';
-import { fetchUser } from '../../store/usersReducer';
+import { fetchUser, getUser } from '../../store/usersReducer';
 import { useParams, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import PinUserIndex from '../Pins/PinUserIndex';
-import { getUser } from '../../store/usersReducer';
+import BoardDropdownModal from '../Boards/BoardAdd';
+import BoardForm from '../Boards/BoardForm';
 
 export default function UserShow() {
     const dispatch = useDispatch()
@@ -16,7 +17,7 @@ export default function UserShow() {
     const { userId } = useParams()
 
     const user = useSelector(getUser(userId))
-    console.log(user)
+    // console.log(user)
     
     const { boardType } = useParams()
 
@@ -24,7 +25,7 @@ export default function UserShow() {
         dispatch(fetchUser(userId))
     }, [dispatch, userId])
 
-    console.log(boardType)
+    // console.log(boardType)
     function createdOrSaved() {
         if (boardType === 'created') {
             return (
@@ -32,9 +33,15 @@ export default function UserShow() {
                 )
         } else {
             return (
-                <BoardIndex />
+                <BoardIndex user={user}/>
                 )
         }
+    }
+
+    function createBoard(){
+        return (
+            <BoardForm/>
+        )
     }
 
 
@@ -55,8 +62,17 @@ export default function UserShow() {
                     <div className='small-username'> @{username} </div>
                 </div>
                 <div className='create-or-save'>
-                    <Link to={`/users/${userId}/created`}>Created </Link>
-                    <Link to={`/users/${userId}/saved`}>Saved</Link>
+                    <div className='user-show-create-div'>
+                    <Link to={`/users/${userId}/created`} className='user-show-created'>Created </Link>
+                    </div >
+                    <div className='user-show-saved-div'>
+                    <Link to={`/users/${userId}/saved`} className='user-show-saved'>Saved</Link>
+                    </div>
+                </div>
+                <div className='plus-button-wrapper'>
+                    <div className='plus-button'>
+                        <h1 onClick={createBoard}>+</h1>
+                    </div>
                 </div>
                     {createdOrSaved()}
             </div>

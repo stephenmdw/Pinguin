@@ -13,8 +13,11 @@ export default function PinIndex() {
     }, [dispatch])
 
     return (
+        <div className='pin-index-wrapper'>
         <div className='pin-index'>
             {pins.map((pin) => <PinIndexItem pin={pin}/>)}
+
+        </div>
         </div>
     )
 }

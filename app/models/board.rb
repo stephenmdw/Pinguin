@@ -11,23 +11,13 @@
 #  updated_at  :datetime         not null
 #
 class Board < ApplicationRecord
-    validates :title, :user_id, presence: true
+    validates :title, presence: true
     
     belongs_to :user
 
-    has_many :pins,
-        foreign_key: :board_id,
-        class_name: :Pin,
-        dependent: :destroy 
-
-
-    has_many :pinboard,
-        foreign_key: :board_id,
-        class_name: :Pinboard,
+    has_many :pinboards,
         dependent: :destroy
 
     has_many :pins, 
-        through: :pinboard,
-        source: :board,
-        dependent: :destroy
+        through: :pinboards
 end

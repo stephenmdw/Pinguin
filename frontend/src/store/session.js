@@ -5,8 +5,8 @@ export const REMOVE_CURRENT_USER = 'session/removeCurrentUser'
 
 const setCurrentUser = (user) => {
     return {
-    type: SET_CURRENT_USER,
-    payload: user
+        type: SET_CURRENT_USER,
+        payload: user
     };
 };
 
@@ -18,12 +18,12 @@ const removeCurrentUser = () => {
 
 const storeCSRFToken = response => {
     const csrfToken = response.headers.get("X-CSRF-Token");
-    if (csrfToken) {sessionStorage.setItem("X-CSRF-Token", csrfToken);}
+    if (csrfToken) { sessionStorage.setItem("X-CSRF-Token", csrfToken); }
 }
 
 const storeCurrentUser = user => {
-    if (user) {sessionStorage.setItem("currentUser", JSON.stringify(user));}
-    else {sessionStorage.removeItem("currentUser");}
+    if (user) { sessionStorage.setItem("currentUser", JSON.stringify(user)); }
+    else { sessionStorage.removeItem("currentUser"); }
 }
 
 export const restoreSession = () => async dispatch => {
@@ -41,7 +41,7 @@ export const login = ({ credential, password }) => async dispatch => {
         body: JSON.stringify({ credential, password })
     });
     const data = await response.json();
-    debugger
+    // debugger
     storeCurrentUser(data);
     dispatch(setCurrentUser(data));
     return response;
@@ -57,7 +57,7 @@ export const logout = () => async (dispatch) => {
 };
 
 
-const initialState = { 
+const initialState = {
     user: sessionStorage.getItem("currentUser") ? JSON.parse(sessionStorage.getItem("currentUser")) : null
 };
 
@@ -76,13 +76,13 @@ export const signup = (user) => async (dispatch) => {
     return response;
 };
 
-export default function sessionReducer(state=initialState, action) {
-    let newState = {...state}
+export default function sessionReducer(state = initialState, action) {
+    let newState = { ...state }
     switch (action.type) {
         case SET_CURRENT_USER:
-            return {...state, user: action.payload}
+            return { ...state, user: action.payload }
         case REMOVE_CURRENT_USER:
-            return {...state, user: null}
+            return { ...state, user: null }
         default:
             return state;
     }

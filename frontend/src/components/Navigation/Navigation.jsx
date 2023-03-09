@@ -52,7 +52,6 @@ function Navigation() {
       <div >
         {sessionLinks}
       </div>
-      {/* Add links to user's boards */}
     </div>
   );
 }

@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 class Pinboard < ApplicationRecord
-    belongs_to :pin
+    belongs_to :pin, inverse_of: :pinboards
 
-    belongs_to :board
+    belongs_to :board, inverse_of: :pinboards
 end

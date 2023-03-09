@@ -18,8 +18,10 @@ export default function PinUserIndex() {
     }, [dispatch])
 
     return (
+        <div style={{display: 'flex', alignItems: 'center', flexDirection:'column'}}>
         <div className='pin-index'>
             {userPins.map(pin => <PinIndexItem pin={pin}/>)}
+        </div>
         </div>
     )
 }

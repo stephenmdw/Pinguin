@@ -54,6 +54,18 @@ export default function PinForm() {
         setPhotoUrl(null)
     }
 
+    // async function handleSubmit(e) {
+    //     e.preventDefault()
+    //     const formData = new FormData();
+    //     formData.append('pin[title]', title);
+    //     formData.append('pin[description]', description);
+    //     formData.append('pin[altText]', altText);
+    //     formData.append('pin[destinationLink]', destinationLink);
+    //     formData.append('pin[photo]', photoFile);
+    //     dispatch(createPin(formData)).then(history.push('/'))
+    //     deleteContent()
+    // }
+
     async function handleSubmit(e) {
         e.preventDefault()
         const formData = new FormData();
@@ -62,8 +74,16 @@ export default function PinForm() {
         formData.append('pin[altText]', altText);
         formData.append('pin[destinationLink]', destinationLink);
         formData.append('pin[photo]', photoFile);
-        dispatch(createPin(formData))
-        deleteContent()
+        return dispatch(createPin(formData))
+            .catch(async (res) => {
+                console.log('res:', res )
+                let data = await res.clone().json();
+            
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
+            })
+            .then(history.push('/'))
     }
 
 
@@ -75,12 +95,14 @@ export default function PinForm() {
         return null
     } else {
         let username = sessionUser.username
-        let initial = username.slice(0,1)
+        let initial = username.slice(0, 1)
         return (
             <div className='pin-form-page'>
-                
-                <form onSubmit={handleSubmit} className="pin-form">
 
+                <form onSubmit={handleSubmit} className="pin-form">
+                    <ul>
+                        {errors.map(error => <li key={error}>{error}</li>)}
+                    </ul>
                     <div className='pin-form-wrapper'>
 
                         <div className='submit-bar'>
@@ -107,23 +129,24 @@ export default function PinForm() {
                         <div className='input-area-wrapper'>
                             <div className="image-upload-area">
                                 <div className='image-upload'>
-                                    { preview ? <div className="preview-photo"> {preview} </div> : 
+                                    {preview ? <div className="preview-photo"> {preview} </div> :
                                         <div className='image-upload-button-wrapper'>
-                                            <div className="image-upload-background"/>
-                                                    <div className="image-upload-dashed">
-                                                        <div className='image-upload-icon-text'><div className='image-upload-icon'/>Drag and drop or click to  <br/>upload</div>
-                                                </div>
-                                                <input
-                                                    title=' '
-                                                    type="file" 
-                                                    className="image-upload-button"
-                                                    onChange={handleFile}></input>
+                                            <div className="image-upload-background" />
+                                            <div className="image-upload-dashed">
+                                                <div className='image-upload-icon-text'><div className='image-upload-icon' />Drag and drop or click to  <br />upload</div>
+                                            </div>
+                                            <input
+                                                title=' '
+                                                type="file"
+                                                className="image-upload-button"
+                                                onChange={handleFile}></input>
                                         </div>
-                                        }
+                                    }
                                 </div>
                                 <div className='save-from-site-div'><input className='save-from-site-button' type="text" placeholder="Save from site"></input></div>
                             </div>
                             <div className="pin-input-area">
+
                                 <div className='top-input'>
                                     <input
                                         type="text"

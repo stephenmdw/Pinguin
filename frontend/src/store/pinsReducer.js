@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf"
+import { RECEIVE_BOARD } from "./boardsReducer"
 
 const RECEIVE_PIN = 'pins/RECEIVE_PIN' //show, create, update
 const RECEIVE_PINS = 'pins/RECEIVE_PINS' //index
@@ -59,6 +60,7 @@ export const createPin = pin => async dispatch => {
         let newPin = await res.json()
         dispatch(receivePin(newPin))
     }
+    return res;
 }
 
 export const updatePin = pin => async dispatch => {
@@ -93,8 +95,10 @@ export default function pinsReducer(state={}, action) {
         case RECEIVE_PIN:
             // debugger
             let pin = action.payload.pin
-               newState[pin.id] = pin
+            newState[pin.id] = pin
             return newState
+        case RECEIVE_BOARD:
+            return action.payload.pins
         case REMOVE_PIN:
             delete newState[action.pinId]
             return newState
