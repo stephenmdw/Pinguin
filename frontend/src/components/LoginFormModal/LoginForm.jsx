@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import { useEffect } from 'react';
-
+import { useHistory } from 'react-router-dom';
 function LoginFormPage(props) {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
@@ -13,8 +13,9 @@ function LoginFormPage(props) {
     const [errors, setErrors] = useState([]);
     const setShowLoginModal = props.setShowLoginModal
     const setShowSignUpModal = props.setShowSignUpModal
-
+    const history = useHistory()
     if (sessionUser) return <Redirect to="/" />;
+    
 
     const demoLogin = (e) => {
         e.preventDefault()

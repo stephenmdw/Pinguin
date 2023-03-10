@@ -61,6 +61,11 @@
     z-index: 8;
 }
 
+
+.navbar.scrolled {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+  }
+
 .left-side {
     display: flex;
     width: 200px;
@@ -190,7 +195,7 @@
 .profile-and-session {
     display: flex;
     flex: row;
-    width: 110px;
+    width: 90px;
     justify-content: space-between;
     align-items: center;
 }

@@ -15,6 +15,21 @@ function Navigation() {
 
   let sessionLinks;
 
+  let navbar = document.querySelector('.navbar');
+
+// Add a scroll event listener to the window object
+window.addEventListener('scroll', function() {
+  // Check if the user has scrolled past the top of the navbar
+  if (window.scrollY > navbar.offsetTop) {
+    // Add the 'scrolled' class to the navbar
+    navbar.classList.add('scrolled');
+  } else {
+    // Remove the 'scrolled' class from the navbar
+    navbar.classList.remove('scrolled');
+  }
+});
+
+
   if (sessionUser) {
     let username = sessionUser.username
     let initial = username.slice(0,1)
@@ -47,6 +62,7 @@ function Navigation() {
         <NavLink className="home-link" exact to="/">
           <div className={sessionUser ? "small-home-button" : "home-button"}></div>
         </NavLink>
+        {sessionUser ? <NavLink className="post-form-button" to="/">Home</NavLink> : ""}
 
         {sessionUser ? <NavLink className="post-form-button" to="/pin-builder">Create</NavLink> : ""}
       </div>
