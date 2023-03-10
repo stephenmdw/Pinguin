@@ -5,12 +5,8 @@ import './PinEdit.css'
 
 
 function PinEditModal({pin}) {
-    // const showPinEditModal = props.showPinEditModal
-    // const setShowPinEditModal = props.setShowPinEditModal
     const [showPinEditModal, setShowPinEditModal] = useState(false)
 
-
-    // const setShowSignUpModal = props.setShowSignUpModal
     return (
         <>
             <button className="modal-pin-edit" onClick={() => setShowPinEditModal(true)}></button>

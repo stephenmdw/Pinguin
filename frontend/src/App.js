@@ -26,7 +26,6 @@ function App() {
     <Navigation/>
       <Switch>
         <Route path="/pin-builder/">
-          {/* <PinForm/>  */}
           {requireLogIn(<PinForm/>)}
         </Route>
         <Route exact path="/pin/:pinId">

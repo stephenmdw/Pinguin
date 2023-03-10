@@ -8,7 +8,6 @@ function BoardCreate() {
     // const showPinEditModal = props.showPinEditModal
     // const setShowPinEditModal = props.setShowPinEditModal
     const [showBoardFormModal, setShowBoardFormModal] = useState(false)
-    console.log(showBoardFormModal)
 
     // const setShowSignUpModal = props.setShowSignUpModal
     return (
