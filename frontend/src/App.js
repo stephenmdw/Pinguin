@@ -15,35 +15,35 @@ import BoardShow from "./components/Boards/BoardShow";
 
 function App() {
   const sessionUser = useSelector(state => state.session.user);
-  // const history = useHistory()
+  const history = useHistory()
 
-  // function requireLogIn(component){
-  //   return !sessionUser ? history.push('/') : component
-  // }
+  function requireLogIn(component){
+    return !sessionUser ? history.push('/') : component
+  }
 
   return (
     <>
     <Navigation/>
       <Switch>
         <Route path="/pin-builder/">
-          <PinForm/> 
-          {/* {requireLogIn(<PinForm/>)} */}
+          {/* <PinForm/>  */}
+          {requireLogIn(<PinForm/>)}
         </Route>
         <Route exact path="/pin/:pinId">
-          <PinShow/>
-            {/* {requireLogIn(<PinShow/>)} */}
+          {/* <PinShow/> */}
+            {requireLogIn(<PinShow/>)}
         </Route>
         <Route path="/users/:userId/boards/:boardId">
-          <BoardShow/>
-          {/* {requireLogIn(<BoardShow/>)} */}
+          {/* <BoardShow/> */}
+          {requireLogIn(<BoardShow/>)}
         </Route>
         <Route path="/users/:userId/:boardType">
-          <UserShow/>
-          {/* {requireLogIn(<UserShow/>)} */}
+          {/* <UserShow/> */}
+          {requireLogIn(<UserShow/>)}
         </Route>
         <Route path="/users/:userId/">
-          <UserShow/>
-          {/* {requireLogIn(<UserShow/>)} */}
+          {/* <UserShow/> */}
+          {requireLogIn(<UserShow/>)}
         </Route>
         <Route path="/board-builder">
           {/* <BoardCreate/> */}

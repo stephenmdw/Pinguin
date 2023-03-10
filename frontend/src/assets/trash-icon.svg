@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="640" height="640" viewBox="0 0 640 640" xml:space="preserve">
+<desc>Created with Fabric.js 4.6.0</desc>
+<defs>
+</defs>
+<g transform="matrix(0.75 0 0 0.75 320.04 319.96)" id="RqQtLdPc_GiRaRJnbXaxV"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(226,226,226); fill-opacity: 0.89; fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke"  transform=" translate(0, 0)" d="M 0 -426.66667 C 235.94667 -426.66667 426.66667 -235.94667 426.66667 0 C 426.66667 235.94667 235.94667 426.66667 0 426.66667 C -235.94667 426.66667 -426.66667 235.94667 -426.66667 0 C -426.66667 -235.94667 -235.94667 -426.66667 0 -426.66667 M 213.33333 -213.33333 L 106.66666 -213.33333 L 63.99998999999999 -256 L -64.00001 -256 L -106.66668000000001 -213.33333 L -213.33335 -213.33333 L -213.33335 -127.99999999999999 L 213.33332000000001 -127.99999999999999 L 213.33332000000001 -213.33333 M -128 256 L 128 256 C 151.56415 256 170.66667 236.89748 170.66667 213.33333 L 170.66667 -85.33334000000002 L -170.66665999999998 -85.33334000000002 L -170.66665999999998 213.33333 C -170.66665999999998 236.89748 -151.56413999999998 256 -127.99998999999997 256 z" stroke-linecap="round" />
+</g>
+</svg>

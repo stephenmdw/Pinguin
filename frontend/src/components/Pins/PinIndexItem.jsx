@@ -32,7 +32,7 @@ export default function PinIndexItem({ pin }) {
             onMouseLeave={() => setIsHovered(false)}>
                 {isHovered &&
                     <div className="save-button">
-                        <BoardDropdownModal pin={pin} />
+                        {/* <BoardDropdownModal pin={pin} /> */}
                     </div>}
                 
 

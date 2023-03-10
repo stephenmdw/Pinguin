@@ -72,7 +72,6 @@ export default function UserShow() {
                 </div>
                 <div className='plus-button-wrapper'>
                     <div className='plus-button'>
-                        <h1 onClick={createBoard}>+</h1>
                         <BoardCreate/>
                     </div>
                 </div>

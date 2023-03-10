@@ -14,7 +14,7 @@ function LoginFormPage(props) {
     const setShowLoginModal = props.setShowLoginModal
     const setShowSignUpModal = props.setShowSignUpModal
 
-    if (sessionUser) return <Redirect to="/"/>;
+    if (sessionUser) return <Redirect to="/" />;
 
     const demoLogin = (e) => {
         e.preventDefault()

@@ -98,7 +98,8 @@ export default function pinsReducer(state={}, action) {
             newState[pin.id] = pin
             return newState
         case RECEIVE_BOARD:
-            return action.payload.pins
+            let newReturn = action.payload.pins ? action.payload.pins : []
+            return newReturn
         case REMOVE_PIN:
             delete newState[action.pinId]
             return newState
