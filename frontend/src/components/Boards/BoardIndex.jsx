@@ -3,6 +3,7 @@ import { getBoards, fetchBoards } from '../../store/boardsReducer';
 import BoardIndexItem from '../Boards/BoardIndexItem';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './BoardIndex.css'
 
 export default function BoardIndex({user}) {
     const dispatch = useDispatch()
@@ -18,8 +19,10 @@ export default function BoardIndex({user}) {
     }, [dispatch])
 
     return (
-        <div>
-            {userBoards.map(board => <BoardIndexItem board={board} user={user}/>)}
+        <div className='board-index-wrapper'>
+            <div className='board-index-label'>
+                {userBoards.map(board => <BoardIndexItem board={board} user={user}/>)}
+            </div>
         </div>
     )
 }

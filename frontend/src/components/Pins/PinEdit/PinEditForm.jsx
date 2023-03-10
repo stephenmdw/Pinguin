@@ -122,11 +122,15 @@ export default function PinEditForm({ setShowPinEditModal, pin }) {
                         </div>
                     </div>
                     <div className='save-and-delete-wrapper'>
-                        <button className="delete-button" onClick={deleteCurrentPin}>
-                            Delete</button>
-                        <button className='cancel-button' onClick={() => setShowPinEditModal(false)}>Cancel</button>
-                        {/* <input className="save-input" type="submit" value="Save" /> */}
-                        <button className='save-input' onClick={(e) => handleSubmit(e)}>Save</button>
+                        <div>
+                            <button className="delete-button" onClick={deleteCurrentPin}>
+                                Delete</button>
+                        </div>
+                        <div className='cancel-and-save'>
+                            <button className='cancel-button' onClick={() => setShowPinEditModal(false)}>Cancel</button>
+                            {/* <input className="save-input" type="submit" value="Save" /> */}
+                            <button className='save-edit-button' onClick={(e) => handleSubmit(e)}>Save</button>
+                        </div>
                     </div>
 
                 </div>

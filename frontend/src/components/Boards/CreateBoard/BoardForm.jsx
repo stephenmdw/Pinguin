@@ -26,13 +26,15 @@ export default function BoardForm(){
                 <h1 className="create-board-header">Create board</h1>
             </div>
             <form className="create-board-form" onSubmit={handleSubmit}>
-            <label>Name
+                <div>
+            <label className='board-create-label'>Name</label>
                 <input 
                     type="text"
+                    className='board-create-title'
                     placeholder={`Like "Places to go" or "Recipes to Make"`}
                     value={title}
                     onChange={(e)=> setTitle(e.target.value)}/>
-            </label>
+            </div>
             <div className="create-board-footer">
                 <button className="create-board-button-submit">Create</button>
             </div>

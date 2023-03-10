@@ -25,6 +25,9 @@
     flex: 1; /* fill the remaining space */
     min-height: 0; /* optional */
     overflow: auto; /* overflow if exceeds available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 
@@ -35,5 +38,27 @@
 }
 
 .create-board-button-submit {
-    
+    width: 70px;
+    height: 40px;
+    border-radius: 20px;
+    border-style: none;
+    color: white;
+    background-color: #E60023;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.board-create-label {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+}
+.board-create-title {
+    display: flex;
+    padding: 16px 8px;
+    height: 48px;
+    border-radius: 15px;
+    width: 300px;;
+    font-size: 16px;
+    border-color: #cdcdcd;
+    border-style: solid;
 }

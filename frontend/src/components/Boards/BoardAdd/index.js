@@ -9,7 +9,7 @@ function BoardDropdownModal({ pin }) {
     // const showPinEditModal = props.showPinEditModal
     // const setShowPinEditModal = props.setShowPinEditModal
     const [showBoardDropdownModal, setShowBoardDropdownModal] = useState(false)
-    console.log(showBoardDropdownModal)
+    // console.log(showBoardDropdownModal)
     const [buttonPosition, setButtonPosition] = useState(null);
 
     function handleClick() {

@@ -84,13 +84,10 @@ export default function sessionReducer(state = initialState, action) {
     let newState = { ...state }
     switch (action.type) {
         case SET_CURRENT_USER:
-            console.log('1:', action.payload)
             return { user: action.payload.user }
         case REMOVE_CURRENT_USER:
-            console.log('2:')
             return { user: null }
         default:
-            console.log('3')
             return state;
     }
 }

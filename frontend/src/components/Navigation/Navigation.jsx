@@ -6,28 +6,29 @@ import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal';
 import './Navigation.css';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
-  console.log('sessionUser:', sessionUser)
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
   let sessionLinks;
 
-  let navbar = document.querySelector('.navbar');
+//   let navbar = document.querySelector('.navbar');
 
-// Add a scroll event listener to the window object
-window.addEventListener('scroll', function() {
-  // Check if the user has scrolled past the top of the navbar
-  if (window.scrollY > navbar.offsetTop) {
-    // Add the 'scrolled' class to the navbar
-    navbar.classList.add('scrolled');
-  } else {
-    // Remove the 'scrolled' class from the navbar
-    navbar.classList.remove('scrolled');
-  }
-});
+// // Add a scroll event listener to the window object
+// window.addEventListener('scroll', function() {
+//   // Check if the user has scrolled past the top of the navbar
+//   if (window.scrollY > navbar.offsetTop) {
+//     // Add the 'scrolled' class to the navbar
+//     navbar.classList.add('scrolled');
+//   } else {
+//     // Remove the 'scrolled' class from the navbar
+//     navbar.classList.remove('scrolled');
+//   }
+// });
+
 
 
   if (sessionUser) {

@@ -18,7 +18,7 @@ export const getUsers = state => {
 }
 
 export const getUser = (userId) => (state) => {
-    console.log(state) //state is returning an empty user state
+    //state is returning an empty user state
     return state.users ? state.users[userId] : null
 }
 

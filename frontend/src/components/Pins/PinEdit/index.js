@@ -8,7 +8,7 @@ function PinEditModal({pin}) {
     // const showPinEditModal = props.showPinEditModal
     // const setShowPinEditModal = props.setShowPinEditModal
     const [showPinEditModal, setShowPinEditModal] = useState(false)
-    console.log(showPinEditModal)
+
 
     // const setShowSignUpModal = props.setShowSignUpModal
     return (

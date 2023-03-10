@@ -1,0 +1,25 @@
+.board-index-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.board-index-label {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    text-align: center;
+    font-size: 24px;
+}
+
+.board-index-item {
+    text-decoration-line: none;
+    color: black;
+}
+
+.board-index-item-div {
+    padding: 10px 5px 10px 5px;
+    border-radius: 15px;
+}
+
+.board-index-item-div:hover {
+    background-color: #efefefef
+
+}
