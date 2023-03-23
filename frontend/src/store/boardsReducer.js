@@ -56,6 +56,7 @@ export const createBoard = (board) => async dispatch => {
         let newBoard = await res.json()
         dispatch(receiveBoard(newBoard))
     }
+    return res
 }
 
 export const updateBoard = (board) => async dispatch => {

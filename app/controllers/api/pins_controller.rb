@@ -14,14 +14,27 @@ class Api::PinsController < ApplicationController
     end
 
     def create
-        # debugger
-        @pin = Pin.new(pin_params)
+        # debugger    
+        pin_params2 = {}
+        pin_params.each do |k, v|
+            unless k == 'photo'
+                pin_params2[k] = v
+            end
+        end
+
+        if pin_params[:photo] == "null"
+            pin_params2[:photo] = nil
+        else 
+            pin_params2[:photo] = pin_params[:photo]
+        end
+
+        @pin = Pin.new(pin_params2)
         @pin.user_id = current_user.id
         if @pin.save
-
             render :show
         else
             render json: @pin.errors.full_messages, status: 422
+            # render json: {errors: 'Pin requires a title and photo'}, status: 422
         end
     end
 

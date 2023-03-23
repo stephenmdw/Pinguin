@@ -5,13 +5,12 @@ import { getBoards, fetchBoards } from '../../../store/boardsReducer';
 import BoardMenuItem from './BoardMenuItem';
 import './BoardDropdown.css'
 
-export default function BoardDropDown({pin}) {
+export default function BoardDropDown({setShowBoardDropdownModal, pin}) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const { userId } = useParams()
     const boards = useSelector(getBoards)
     const userBoards = boards.filter((board) => board.userId == sessionUser.id)
-    const [showMenu, setShowMenu] = useState(false)
 
     useEffect(()=>{
         dispatch(fetchBoards())
@@ -22,7 +21,7 @@ export default function BoardDropDown({pin}) {
                 <div className="board-dropdown-wrapper">
                 <div className='board-menu-header'>Save</div>
                     <ul className="board-dropdown">
-                        {userBoards.map((board) => (<li className='boardmenuitem'> <BoardMenuItem pin={pin} board={board} /> </li>))}
+                        {userBoards.map((board) => (<li className='boardmenuitem'> <BoardMenuItem setShowBoardDropdownModal={setShowBoardDropdownModal} pin={pin} board={board} /> </li>))}
                     </ul>
                 </div>
         </div>

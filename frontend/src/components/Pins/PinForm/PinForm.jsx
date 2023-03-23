@@ -74,17 +74,25 @@ export default function PinForm() {
         formData.append('pin[altText]', altText);
         formData.append('pin[destinationLink]', destinationLink);
         formData.append('pin[photo]', photoFile);
-        return dispatch(createPin(formData))
-            .catch(async (res) => {
-                console.log('res:', res )
-                let data = await res.clone().json();
-            
-                if (data?.errors) setErrors(data.errors);
-                else if (data) setErrors([data]);
-                else setErrors([res.statusText]);
-            })
-            .then(history.push('/'))
-    }
+            dispatch(createPin(formData))
+                .then((res)=> {
+                    if(res.ok){
+                    history.push('/')
+                    } else {
+                        res.json().then((data) => {
+                            if (data?.errors) setErrors(data.errors);
+                            else if (data) setErrors([data]);
+                            else setErrors([res.statusText]);
+                          });
+                    }
+                })
+                .catch(async (res) => {
+                            let data = await res.clone().json();
+                            if (data?.errors) setErrors(data.errors);
+                            else if (data) setErrors([data]);
+                            else setErrors([res.statusText]);
+                        })
+        }
 
 
     let preview = null;
@@ -101,7 +109,7 @@ export default function PinForm() {
 
                 <form onSubmit={handleSubmit} className="pin-form">
                     <ul>
-                        {errors.map(error => <li key={error}>{error}</li>)}
+                        {errors.map(error => <li key={error.id}>{error}</li>)}
                     </ul>
                     <div className='pin-form-wrapper'>
 

@@ -15,7 +15,7 @@ class Api::BoardsController < ApplicationController
 
     def create
         @board = Board.new(board_params)
-        if @board.save!
+        if @board.save
             render :show
         else
             render json: {error: "Board must include a title"}, status: 422

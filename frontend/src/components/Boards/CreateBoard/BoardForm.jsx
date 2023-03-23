@@ -1,8 +1,11 @@
 import { createBoard } from "../../../store/boardsReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 export default function BoardForm(){
     const dispatch = useDispatch()
+    const [errors, setErrors] = useState([]);
+    const history = useHistory()
 
     const [title, setTitle] = useState('')
     let board = {
@@ -18,6 +21,24 @@ export default function BoardForm(){
     function handleSubmit() {
         let newBoard = {...board, title, secret, userId }
         dispatch(createBoard(newBoard))
+        .then((res)=> {
+            if(res.ok){
+                console.log('res ok')
+            // history.push('/')
+            } else {
+                res.json().then((data) => {
+                    if (data?.errors) setErrors(data.errors);
+                    else if (data) setErrors([data]);
+                    else setErrors([res.statusText]);
+                });
+            }
+        })
+        .catch(async (res) => {
+                    let data = await res.clone().json();
+                    if (data?.errors) setErrors(data.errors);
+                    else if (data) setErrors([data]);
+                    else setErrors([res.statusText]);
+                })    
     }
 
     return (

@@ -1,10 +1,12 @@
 class Api::PinboardsController < ApplicationController
+    wrap_parameters include: Pinboard.attribute_names + ['pinId', 'boardId']
+
+    
     def create
         @pinboard = Pinboard.new(pinboard_params)
         @pin = Pin.find_by(id: pinboard_params[:pin_id])
         if @pinboard.save
-            @pin
-            render :show
+            render json: {message: 'added pin to board'}
         else
             render json: @pinboard.errors.full_messages, status: 422
         end

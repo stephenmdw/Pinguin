@@ -6,23 +6,13 @@ import { BoardModal } from '../../../context/BoardModal';
 
 function BoardDropdownModal({ pin }) {
     const buttonRef = useRef()
-    // const showPinEditModal = props.showPinEditModal
-    // const setShowPinEditModal = props.setShowPinEditModal
     const [showBoardDropdownModal, setShowBoardDropdownModal] = useState(false)
     // console.log(showBoardDropdownModal)
     const [buttonPosition, setButtonPosition] = useState(null);
-
-    function handleClick() {
+    function handleClick(e) {
         const rect = buttonRef.current.getBoundingClientRect();
-        setButtonPosition({
-            top: rect.bottom,
-            left: rect.left,
-        });
+        setButtonPosition([(e.clientX), window.pageYOffset < 100 ? e.clientY : e.clientY + window.pageYOffset + 150  ]);
         setShowBoardDropdownModal(true)
-    }
-
-    function handleSave() {
-        
     }
 
     // const setShowSignUpModal = props.setShowSignUpModal
@@ -30,9 +20,7 @@ function BoardDropdownModal({ pin }) {
         <>
             <div className="board-menu-button-wrapper">
                 <button className='board-menu-opener' ref={buttonRef} onClick={handleClick}>Board</button>
-                <div className='board-menu-save' onClick={handleSave}>Save</div>
-            </div>
-            {showBoardDropdownModal && (
+                {showBoardDropdownModal && (
                 <BoardModal buttonPosition={buttonPosition} onClose={() => setShowBoardDropdownModal(false)}>
                     <BoardDropDown
                         setShowBoardDropdownModal={setShowBoardDropdownModal}
@@ -40,6 +28,9 @@ function BoardDropdownModal({ pin }) {
                     />
                 </BoardModal>
             )}
+                <div className='board-menu-save'>Save</div>
+            </div>
+
         </>
         // <>
         //     <div className="board-menu-button-wrapper">

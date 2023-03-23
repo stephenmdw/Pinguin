@@ -25,15 +25,16 @@ export function BoardModalProvider({ children }) {
 export function BoardModal({ onClose, children, buttonPosition }) {
     const modalNode = useContext(BoardModalContext);
     if (!modalNode) return null;
-    let toppos = buttonPosition.top - 200
-    // console.log('bpleft', buttonPosition.left)
-    let leftpos = buttonPosition.left
+    let toppos = buttonPosition[1]
+    console.log('bpleft', buttonPosition[0])
+    console.log('bptop', buttonPosition[1])
+    let leftpos = buttonPosition[0] - 400
     // console.log(leftpos)
     return ReactDOM.createPortal(
         <div id="board-modal" style={{
             position: "absolute",
             top: toppos,
-            // left: leftpos
+            left: leftpos
             
         }}>
         <div id="board-modal-background" onClick={onClose} />

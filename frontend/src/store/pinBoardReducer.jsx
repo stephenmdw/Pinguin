@@ -34,3 +34,16 @@ export const addPinToBoard = (boardId, pinId) => async dispatch => {
         dispatch(receivePinboard(pinboard))
     }
 }
+
+export default function pinBoardReducer(state={}, action) {
+    let newState = {...state}
+    switch (action.type) {
+        case RECEIVE_PINBOARD:
+            return action.pinboard
+        case REMOVE_PINBOARD:
+            delete newState[action.pinboardId]
+            return newState
+        default:
+            return state;
+    }
+}
