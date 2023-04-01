@@ -74,25 +74,25 @@ export default function PinForm() {
         formData.append('pin[altText]', altText);
         formData.append('pin[destinationLink]', destinationLink);
         formData.append('pin[photo]', photoFile);
-            dispatch(createPin(formData))
-                .then((res)=> {
-                    if(res.ok){
+        dispatch(createPin(formData))
+            .then((res) => {
+                if (res.ok) {
                     history.push('/')
-                    } else {
-                        res.json().then((data) => {
-                            if (data?.errors) setErrors(data.errors);
-                            else if (data) setErrors([data]);
-                            else setErrors([res.statusText]);
-                          });
-                    }
-                })
-                .catch(async (res) => {
-                            let data = await res.clone().json();
-                            if (data?.errors) setErrors(data.errors);
-                            else if (data) setErrors([data]);
-                            else setErrors([res.statusText]);
-                        })
-        }
+                } else {
+                    res.json().then((data) => {
+                        if (data?.errors) setErrors(data.errors);
+                        else if (data) setErrors([data]);
+                        else setErrors([res.statusText]);
+                    });
+                }
+            })
+            .catch(async (res) => {
+                let data = await res.clone().json();
+                if (data?.errors) setErrors(data.errors);
+                else if (data) setErrors([data]);
+                else setErrors([res.statusText]);
+            })
+    }
 
 
     let preview = null;
@@ -108,9 +108,6 @@ export default function PinForm() {
             <div className='pin-form-page'>
 
                 <form onSubmit={handleSubmit} className="pin-form">
-                    <ul>
-                        {errors.map(error => <li key={error.id}>{error}</li>)}
-                    </ul>
                     <div className='pin-form-wrapper'>
 
                         <div className='submit-bar'>
@@ -126,13 +123,9 @@ export default function PinForm() {
                             </div>
 
                             <div className='save-and-board'>
-                                <div className="board-dropdown">
-
-                                </div>
                                 <input className="save-input" type="submit" value="Save" />
                             </div>
                         </div>
-
 
                         <div className='input-area-wrapper'>
                             <div className="image-upload-area">
@@ -151,11 +144,14 @@ export default function PinForm() {
                                         </div>
                                     }
                                 </div>
-                                <div className='save-from-site-div'><input className='save-from-site-button' type="text" placeholder="Save from site"></input></div>
+                                {/* <div className='save-from-site-div'><input className='save-from-site-button' type="text" placeholder="Save from site"></input></div> */}
                             </div>
                             <div className="pin-input-area">
 
                                 <div className='top-input'>
+                                    <ul >
+                                        {errors.map(error => <li className='pinform-errors' key={error.id}>{error}</li>)}
+                                    </ul>
                                     <input
                                         type="text"
                                         placeholder="Add your title"

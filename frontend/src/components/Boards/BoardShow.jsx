@@ -9,6 +9,7 @@ import PinIndexItem from '../Pins/PinIndexItem'
 import { fetchUser, getUser } from '../../store/usersReducer';
 import BoardDropDown from './BoardAdd/BoardDropDown'
 import { useHistory } from 'react-router-dom'
+import BoardEditModal from './EditBoardModal'
 
 export default function BoardShow() {
     const dispatch = useDispatch()
@@ -17,6 +18,7 @@ export default function BoardShow() {
     const history = useHistory()
     const user = useSelector(getUser(userId))
     const sessionUser = useSelector(state => state.session.user);
+    const [showMenu, setShowMenu] = useState(false);
 
     const board = useSelector(getBoard(boardId))
     const pins = useSelector((state) => Object.values(state.pins))
@@ -26,7 +28,6 @@ export default function BoardShow() {
     useEffect(() => {
         dispatch(fetchUser(userId))
     }, [dispatch, userId])
-    console.log(sessionUser.id, userId)
     function removeCurrentBoard() {
         dispatch(deleteBoard(boardId)).then(history.push(`/users/${userId}`))
     }
@@ -36,6 +37,23 @@ export default function BoardShow() {
     // useEffect(() => {
     //     dispatch(fetchPins())
     // }, [dispatch])
+
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
+
+    useEffect(() => {
+        if (!showMenu) return;
+
+        const closeMenu = () => {
+            setShowMenu(false);
+        };
+
+        document.addEventListener('click', closeMenu);
+
+        return () => document.removeEventListener("click", closeMenu);
+    }, [showMenu]);
 
     useEffect(() => {
         dispatch(fetchBoard(boardId))
@@ -57,6 +75,19 @@ export default function BoardShow() {
                     <div className='boardpin-header-wrapper'>
                         <div className="boardpin-title">{board.title}</div>
                         <div className='user-board-icon'>{initial}</div>
+                        <div className='dotdotdot' onClick={openMenu}></div>
+                        {showMenu && (
+                            <div className="boardshow-dropdown-wrapper">
+                                <ul className="profile-dropdown">
+                                    <BoardEditModal
+                                        board={board}
+                                    />
+                                    <li className='remove-content-button'>
+                                        Delete Board
+                                    </li>
+                                </ul>
+                            </div>
+                        )}
                     </div>
                     <div className='counter-and-delete'>
                         <div className='boardpin-pincounter'>{pins.length} Pins</div>
