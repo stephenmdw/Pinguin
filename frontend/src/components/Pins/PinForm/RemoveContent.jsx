@@ -49,8 +49,8 @@ function RemoveContent(props) {
       {showMenu && (
         <div className="remove-content-dropdown-wrapper">
           <ul className="profile-dropdown">
-            <li>
-              <button onClick={(deleteContent)}>Delete</button>
+            <li onClick={(deleteContent)} className='remove-content-button'>
+              Reset Form
             </li>
           </ul>
         </div>
