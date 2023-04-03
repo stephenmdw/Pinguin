@@ -9,6 +9,7 @@ class Api::PinsController < ApplicationController
 
     def show
         @pin = Pin.find(params[:id])
+        @user = User.find_by(id: @pin.user_id)
         # debugger
         render :show
     end
