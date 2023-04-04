@@ -39,6 +39,7 @@
 
 .index-image:hover {    
     -webkit-filter: brightness(50%);
+
 }
 /* 
 .index-image {
@@ -60,6 +61,7 @@
 }
 
 .save-button {
+    z-index: 5;
     display: flex;
     position: absolute;
     width: 100%;

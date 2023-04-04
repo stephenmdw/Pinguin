@@ -1,11 +1,10 @@
 import { useDispatch } from "react-redux"
 import { addPinToBoard } from "../../../store/pinBoardReducer"
 
-export default function BoardMenuItem ({setShowBoardDropdownModal, pin, board}) {
+export default function BoardMenuItem ({ pin, board}) {
     const dispatch = useDispatch()
 
     const handleClick = () => {
-        setShowBoardDropdownModal(false)
         dispatch(addPinToBoard({pinId: pin.id, boardId: board.id}))
     }
 

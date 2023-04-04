@@ -7,7 +7,6 @@ import './BoardShow.css'
 import { useState } from 'react'
 import PinIndexItem from '../Pins/PinIndexItem'
 import { fetchUser, getUser } from '../../store/usersReducer';
-import BoardDropDown from './BoardAdd/BoardDropDown'
 import { useHistory } from 'react-router-dom'
 import BoardEditModal from './EditBoardModal'
 

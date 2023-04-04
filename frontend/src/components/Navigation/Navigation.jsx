@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -7,6 +7,8 @@ import SignUpFormModal from '../SignUpFormModal';
 import './Navigation.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
@@ -35,16 +37,38 @@ function Navigation() {
     let username = sessionUser.username
     let initial = username.slice(0,1)
     sessionLinks = (
+      <div style={{display:'flex', flexDirection:'row'}}>
+      <a href="https://www.linkedin.com/in/stephen-wong-6655a716b/" target="_blank" style={{color:'black'}}><LinkedInIcon style={{fontSize:'30', height:'80px', paddingRight:'10px'}}/></a>
+      <a href="https://github.com/stephenmdw" target="_blank" style={{color:'black'}}><GitHubIcon style={{fontSize:'30', height:'80px', paddingRight:'10px'}}/></a>
       <div className='profile-and-session'>
+        
+
         <NavLink className='user-link' to={`/users/${sessionUser.id}`}>
           <div className='user-link-initial'>{initial}</div>
         </NavLink>
         <ProfileButton user={sessionUser} />
       </div>
+      </div>
     );
   } else {
     sessionLinks = (
       <div className="session-links">
+        <a href="https://www.linkedin.com/in/stephen-wong-6655a716b/" target="_blank"
+          style={{paddingRight:'10px',
+            fontFamily:'-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+            fontWeight:'700',
+            textDecoration:'none',
+            color:'black'
+          }}
+        >LinkedIn</a>
+        <a href="https://github.com/stephenmdw" target="_blank"
+          style={{paddingRight:'10px',
+            fontFamily:'-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"',
+            fontWeight:'700',
+            textDecoration:'none',
+            color:'black'
+          }}
+        >GitHub</a>
         <LoginFormModal
           showLoginModal={showLoginModal}
           setShowLoginModal={setShowLoginModal}
@@ -67,7 +91,21 @@ function Navigation() {
 
         {sessionUser ? <NavLink className="post-form-button" to="/pin-builder">Create</NavLink> : ""}
       </div>
-      <div >
+      { sessionUser ? 
+      <input style={{width:'70%', 
+        backgroundColor:'#EEEEEE', 
+        height:'35px', 
+        borderRadius:'30px',
+        fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+        display:'flex',
+        marginRight:'20px',
+        marginLeft:'20px',
+        alignItems:'center',
+        paddingLeft:'10px',
+        borderStyle:'none'}}
+        placeholder='Search feature coming soon'>
+      </input> : <></>}
+      <div>
         {sessionLinks}
       </div>
     </div>

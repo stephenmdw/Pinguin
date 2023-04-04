@@ -9,7 +9,8 @@
 
 .show-page {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+
 }
 
 .show-wrapper {
@@ -83,4 +84,14 @@
 .ps-back-button {
     left: 10px;
     height: 20px;
+}
+
+.pin-show-graphic-user {
+    padding-bottom: 20px;
+}
+
+.back-icon:hover {
+    background-color: #EEEEEE;
+    border-radius: 30px;
+
 }
