@@ -1,4 +1,4 @@
-.board-menu-wrapper{ 
+.board-menu-wrapper {
     width: 360px;
     z-index: 6;
     display: flex;
@@ -15,7 +15,7 @@
     border-radius: 15px;
     z-index: 6;
     background: white;
-    padding: 10px;  
+    padding: 10px;
     box-shadow: rgb(0 0 0 / 45%) 0px 2px 10px;
     display: flex;
     flex-direction: column;
@@ -23,10 +23,28 @@
     align-items: center;
 }
 
+.board-dropdown-wrapper-div {
+    display: flex;
+    margin-top: 10px;
+    border-radius: 16px;
+    box-shadow: rgb(0 0 0 / 45%) 0px 0px 4px;
+    height: auto;
+    width: 300px;
+    position: absolute;
+    top: 50px;
+    left:20px;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
 .board-dropdown {
-    background-color: rgb(0,0,0,0);
+    background-color: rgb(0, 0, 0, 0);
     height: 100%;
     width: 100%;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;;
 }
 
 .board-menu-header {
@@ -37,7 +55,10 @@
     text-align: center;
     display: flex;
     align-items: center;
-} 
+    justify-content: center;
+    cursor: default;
+    width: 100%;
+}
 
 .board-menu-button-wrapper {
     display: flex;
@@ -50,14 +71,14 @@
     color: white;
     width: 100px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    background-color: rgb(0,0,0,0);
+    background-color: rgb(0, 0, 0, 0);
     border-style: none;
     font-size: 16px;
     z-index: 10;
     /* position: absolute; */
 }
 
-.board-menu-save{
+.board-menu-save {
     padding: 16px 17px;
     background-color: #e60023;
     border-radius: 25px;
@@ -66,16 +87,19 @@
     font-size: 16px;
     border-style: none;
     font-weight: 700px;
-    z-index:  6
+    z-index: 6
 }
 
 .boardmenuitem:hover {
-    background-color:rgba(0, 0, 0, 0.237);
-    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.237);
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .board-menu-item-label {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 24px;
+    font-size: 16px;
     padding: 10px 0px;
+    width: 300px;
+    text-align: center;
 }

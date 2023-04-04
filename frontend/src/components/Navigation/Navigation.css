@@ -75,7 +75,7 @@
 
 .session-links {
     display: flex;
-    width: 157px;
+    width: auto;
     height: 100%;
     justify-content: space-between;
     align-items: center;

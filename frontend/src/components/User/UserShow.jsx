@@ -6,7 +6,6 @@ import { fetchUser, getUser } from '../../store/usersReducer';
 import { useParams, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import PinUserIndex from '../Pins/PinUserIndex';
-import BoardDropdownModal from '../Boards/BoardAdd';
 import BoardForm from '../Boards/CreateBoard/BoardForm';
 import { BoardCreateModal } from '../../context/Modal';
 import BoardCreate from '../Boards/CreateBoard';

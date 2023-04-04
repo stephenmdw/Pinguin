@@ -6,8 +6,8 @@ import PinEditModal from './PinEdit';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import BoardDropdownModal from '../Boards/BoardAdd';
 import React from 'react';
+import BoardDropdown from '../Boards/BoardSaveDropdown/boardDropdown';
 
 export default function PinIndexItem({ pin }) {
     let spacer = document.getElementsByClassName('random-spacer')
@@ -27,12 +27,12 @@ export default function PinIndexItem({ pin }) {
     }    
 
     return (
-            <div style={{paddingBottom:'16px'}}>
+            <div className='pin-index-item-wrapper' style={{paddingBottom:'16px'}}>
             <div className='pin-index-item-large' onClick={handleClick}  onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
                 {isHovered &&
                     <div className="save-button">
-                        <BoardDropdownModal pin={pin} />    
+                        <BoardDropdown pin={pin} />    
                     </div>}
                 
 
