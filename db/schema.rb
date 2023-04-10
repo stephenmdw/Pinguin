@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_03_213725) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_04_225023) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -54,11 +54,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_213725) do
 
   create_table "comments", force: :cascade do |t|
     t.string "body", null: false
-    t.bigint "commenter_id_id"
+    t.bigint "commenter_id"
     t.bigint "pin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["commenter_id_id"], name: "index_comments_on_commenter_id_id"
+    t.index ["commenter_id"], name: "index_comments_on_commenter_id"
     t.index ["pin_id"], name: "index_comments_on_pin_id"
   end
 
@@ -97,7 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_03_213725) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "boards", "users"
   add_foreign_key "comments", "pins"
-  add_foreign_key "comments", "users", column: "commenter_id_id"
+  add_foreign_key "comments", "users", column: "commenter_id"
   add_foreign_key "pinboards", "boards"
   add_foreign_key "pinboards", "pins"
   add_foreign_key "pins", "users"

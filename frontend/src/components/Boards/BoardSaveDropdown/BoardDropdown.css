@@ -36,6 +36,7 @@
     justify-content: center;
     align-items: center;
     background-color: white;
+    flex-direction: column;
 }
 
 .board-dropdown {
@@ -75,6 +76,9 @@
     border-style: none;
     font-size: 16px;
     z-index: 10;
+    height: 30px;
+    display: flex;
+    align-items: center;
     /* position: absolute; */
 }
 
@@ -87,7 +91,8 @@
     font-size: 16px;
     border-style: none;
     font-weight: 700px;
-    z-index: 6
+    z-index: 6;
+    cursor: pointer;
 }
 
 .boardmenuitem:hover {

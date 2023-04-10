@@ -19,6 +19,7 @@ class User < ApplicationRecord
 
     attr_reader :password
     before_validation :ensure_session_token
+    after_create :create_default_board
 
     has_many :pins,
         foreign_key: :user_id,
@@ -26,6 +27,11 @@ class User < ApplicationRecord
         dependent: :destroy 
         
     has_many :boards,
+        dependent: :destroy
+
+    has_many :comments,
+        foreign_key: :commenter_id,
+        class_name: :Comment,
         dependent: :destroy
     
     def self.find_by_credentials(username, password)
@@ -54,6 +60,11 @@ class User < ApplicationRecord
     end
 
     private
+
+
+    def create_default_board
+        self.boards.create(title: "Profile")
+    end
 
     def ensure_session_token
         self.session_token ||= generate_session_token

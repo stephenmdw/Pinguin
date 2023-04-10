@@ -37,10 +37,12 @@
     /* padding-bottom: 16px; */
 }
 
-.index-image:hover {    
+.index-image-dark {    
     -webkit-filter: brightness(50%);
 
 }
+
+
 /* 
 .index-image {
     height: 100%;
@@ -58,6 +60,7 @@
     /* right: 30px; */
     right: 30px;
     bottom: 35px;
+    z-index: 10
 }
 
 .save-button {
@@ -67,3 +70,4 @@
     width: 100%;
     align-items: space-between;
 }
+

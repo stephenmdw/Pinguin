@@ -31,10 +31,34 @@ export default function LoggedOutHome() {
             <div className="get-your-next-wrapper">
                 <div className='get-your-next'>Get your next</div>
                 <div className="animated-text">
-                    <div className="weekend-dinner">iceberg idea</div>
-                    <div className="home-decor">orca avoiding idea</div>
-                    <div className="new-look">fishing idea</div>
-                    <div className="green-thumb">ice sliding idea</div>
+                    <div className="iceberg-idea">iceberg idea
+                        <div className ="weekend-dinner splash-photos">
+                            <div className='photo1'>
+                                
+                            </div>
+                            <div className='photo2'>
+                                
+                            </div>
+                            <div className='photo3'>
+                                
+                            </div>
+                            <div className='photo4'>
+                                
+                            </div>
+                            <div className='photo5'>
+                                
+                            </div>
+                            <div className='photo6'>
+                                
+                            </div>
+                            <div className='photo7'>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div className="orca-avoiding">orca avoiding idea</div>
+                    <div className="fishing-idea">fishing idea</div>
+                    <div className="ice-sliding">ice sliding idea</div>
                 </div>
             </div>
 

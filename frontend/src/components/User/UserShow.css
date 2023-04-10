@@ -7,8 +7,9 @@
 }
 
 .user-icon {
+    margin-top:  10px;
     display: flex;
-    background-color: #efefef;
+    background-color: #E9E9E9;
     height: 120px;
     width: 120px;
     align-items: center;    
@@ -23,6 +24,7 @@
     font-size: 36px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 600;
+    padding: 10px 0px;
 }
 
 .small-username {
@@ -108,5 +110,5 @@
 }
 
 .plus-button:hover {
-    background-color: #efefef
+    background-color: #E9E9E9
 }

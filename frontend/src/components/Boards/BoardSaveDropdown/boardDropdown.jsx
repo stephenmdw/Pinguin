@@ -4,6 +4,9 @@ import { useHistory } from "react-router-dom";
 import { getBoards, fetchBoards } from "../../../store/boardsReducer";
 import BoardMenuItem from "./BoardMenuItem";
 import './BoardDropdown.css'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { addPinToBoard } from "../../../store/pinBoardReducer";
+
 function BoardDropdown({ pin }) {
     const dispatch = useDispatch();
     const history = useHistory()
@@ -16,6 +19,10 @@ function BoardDropdown({ pin }) {
         if (showMenu) return;
         setShowMenu(true);
     };
+
+    const defaultSave = (pinId) => {
+        dispatch(addPinToBoard({pinId: pinId, boardId: 1}))
+    }
 
     useEffect(() => {
         dispatch(fetchBoards())
@@ -35,13 +42,12 @@ function BoardDropdown({ pin }) {
 
     return (
         <div className="board-menu-button-wrapper">
-            <button className="board-menu-opener" onClick={openMenu}>Board</button>
+            <button className="board-menu-opener" onClick={openMenu}>Board <ExpandMoreIcon/></button>
             <div className='board-menu-save'>Save</div>
             {showMenu && (
                     <div className="board-dropdown-wrapper-div">
+                        <div className='board-menu-header' onClick={defaultSave(pin.id)}>Save</div>
                         <ul className="board-dropdown">
-                        <div className='board-menu-header'>Save</div>
-
                             {userBoards.map((board) => (<li className='boardmenuitem'> <BoardMenuItem pin={pin} board={board} /> </li>))}
                         </ul>
                     </div>
