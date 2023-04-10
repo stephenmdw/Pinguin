@@ -43,10 +43,10 @@ function BoardDropdown({ pin }) {
     return (
         <div className="board-menu-button-wrapper">
             <button className="board-menu-opener" onClick={openMenu}>Board <ExpandMoreIcon/></button>
-            <div className='board-menu-save'>Save</div>
+            <div className='board-menu-save' onClick={()=>defaultSave(pin.id)}>Save</div>
             {showMenu && (
                     <div className="board-dropdown-wrapper-div">
-                        <div className='board-menu-header' onClick={defaultSave(pin.id)}>Save</div>
+                        <div className='board-menu-header'>Save</div>
                         <ul className="board-dropdown">
                             {userBoards.map((board) => (<li className='boardmenuitem'> <BoardMenuItem pin={pin} board={board} /> </li>))}
                         </ul>

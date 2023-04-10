@@ -10,6 +10,7 @@ class Api::BoardsController < ApplicationController
 
     def show
         @board = Board.find_by(id: params[:id])
+        @user = User.find_by(id: :user_id)
         render :show
     end
 
