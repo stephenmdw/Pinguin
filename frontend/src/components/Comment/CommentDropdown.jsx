@@ -99,7 +99,7 @@ export default function CommentDropdown({ comment }) {
                     ></textarea>
 
                     {errors}
-                    <div style={{ display: 'flex', flexDirection: 'row', marginTop: '16px', width: '350px', position: 'relative', left: '140px'}}>
+                    <div style={{ display: 'flex', flexDirection: 'row', marginTop: '16px', width: 'auto', position: 'relative', left: '90px'}}>
                         <button
                             className='comment-cancel'
                             onClick={() => closeEdit()}>Cancel</button>

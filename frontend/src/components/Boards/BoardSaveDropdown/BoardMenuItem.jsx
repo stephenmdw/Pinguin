@@ -9,9 +9,9 @@ export default function BoardMenuItem ({ pin, board}) {
     }
 
     return (
-        <div onClick={handleClick} style={{height: '50px', padding: '8px', width: '280px'}}>
+        <div onClick={handleClick} className='bmi-wrapper' style={{height: '50px', padding: '8px', width: '280px'}}>
             <div className='board-menu-item-preview'>
-
+                <div className='board-save-thumbnail-placeholder'></div>
             </div>
             <div className='board-menu-item-label'>
                 {board.title}

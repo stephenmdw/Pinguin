@@ -100,8 +100,8 @@ export default function PinShow() {
                                             </div>)}
                                 </div>
                             </div>
-                            <div className="comment-post-container" style={{ height: 'auto',}}>  
-                                <div>
+                            <div className="comment-post-container" >  
+                                <div >
                                 <input
                                     onChange={(e) => setBody(e.target.value)}
                                     value={body}

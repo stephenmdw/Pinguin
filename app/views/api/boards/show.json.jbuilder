@@ -2,9 +2,10 @@ json.board do
     # json.set! @board.id do
     json.extract! @board, :id, :title, :description, :secret, :user_id, :created_at, :updated_at
     json.pinIds @board.pin_ids
-    json.username @user.username
+    json.extract! @user, :username
     # end
 end
+
 
 json.pins do
     @board.pins.each do |pin|

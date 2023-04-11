@@ -7,12 +7,10 @@ import { deleteBoard, updateBoard } from "../../../store/boardsReducer";
 export default function BoardEditForm({ setShowBoardEditModal, board }) {
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
-    let userId = sessionUser.id
     const history = useHistory()
     const [errors, setErrors] = useState([]);
     const [title, setTitle] = useState(board.title);
     const [description, setDescription] = useState(board.description);
-
     function handleSubmit(e) {
         e.preventDefault()
         let newBoard = { ...board, title, description }
@@ -22,29 +20,15 @@ export default function BoardEditForm({ setShowBoardEditModal, board }) {
     }
 
     function deleteCurrentBoard() {
-        dispatch(deleteBoard(board.id)).then(setShowBoardEditModal(false))
-
+        // dispatch(deleteBoard(board.id)).then(setShowBoardEditModal(false))
     }
-    //get preview photo to show over the image input area, while not displacing anything
 
     return (
         <div className='background-shade'>
-            <form className="pin-edit-form">
+            <form className="board-edit-form">
                 <div className='pin-edit-form-wrapper'>
                     <header className='edit-header'>Edit this Pin</header>
-                    {/* <div className='submit-bar'>
-                    <div className="dotdotdot">
-                        <RemoveContent
-                            setTitle={setTitle}
-                            setDescription={setDescription}
-                            setAltText={setAltText}
-                            setDestinationLink={setDestinationLink}
-                        />
-                    </div>
-
-                </div> */}
                     <div className="pin-edit-area">
-                        <div className='left-edit-input'>
                             <div className='edit-input-wrapper'>
                                 <div className='label-edit-wrapper'>
                                     <label>Title</label>
@@ -58,7 +42,6 @@ export default function BoardEditForm({ setShowBoardEditModal, board }) {
                                         onChange={(e) => setTitle(e.target.value)}
                                         require='true'>
                                     </input>
-                                </div>
                             </div>
                         </div>
                     </div>

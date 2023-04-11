@@ -82,9 +82,23 @@
     /* position: absolute; */
 }
 
+
 .board-menu-save {
     padding: 16px 17px;
     background-color: #e60023;
+    border-radius: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: white;
+    font-size: 16px;
+    border-style: none;
+    font-weight: 700px;
+    z-index: 6;
+    cursor: pointer;
+}
+
+.board-menu-saved {
+    padding: 16px 17px;
+    background-color: black;
     border-radius: 25px;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     color: white;
@@ -101,10 +115,24 @@
     cursor: pointer;
 }
 
+.bmi-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.board-save-thumbnail-placeholder {
+    height: 50px;
+    width: 70px;
+    background-color: rgb(233, 233, 233);
+    border-radius: 10px;
+}
+
 .board-menu-item-label {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-size: 16px;
-    padding: 10px 0px;
-    width: 300px;
-    text-align: center;
+
+    padding: 0px 0px 0px 20px;
+    display: flex;
+    align-items: center;
+    /* text-align: center; */
 }

@@ -14,7 +14,7 @@ function BoardDropdown({ pin }) {
     const sessionUser = useSelector(state => state.session.user);
     const boards = useSelector(getBoards)
     const userBoards = boards.filter((board) => board.userId == sessionUser.id)
-
+    const [isSaved, setIsSaved] = useState(false)
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
@@ -22,6 +22,7 @@ function BoardDropdown({ pin }) {
 
     const defaultSave = (pinId) => {
         dispatch(addPinToBoard({pinId: pinId, boardId: 1}))
+        setIsSaved(true)
     }
 
     useEffect(() => {
@@ -43,12 +44,14 @@ function BoardDropdown({ pin }) {
     return (
         <div className="board-menu-button-wrapper">
             <button className="board-menu-opener" onClick={openMenu}>Board <ExpandMoreIcon/></button>
-            <div className='board-menu-save' onClick={()=>defaultSave(pin.id)}>Save</div>
+            <div className={isSaved ? 'board-menu-saved' : 'board-menu-save'} onClick={()=>defaultSave(pin.id)}>{isSaved ? "Saved" : "Save"}</div>
             {showMenu && (
                     <div className="board-dropdown-wrapper-div">
                         <div className='board-menu-header'>Save</div>
                         <ul className="board-dropdown">
-                            {userBoards.map((board) => (<li className='boardmenuitem'> <BoardMenuItem pin={pin} board={board} /> </li>))}
+                            {userBoards.map((board) => (<li className='boardmenuitem'> 
+                            <BoardMenuItem pin={pin} board={board} /> 
+                            </li>))}
                         </ul>
                     </div>
             )}

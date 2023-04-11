@@ -44,7 +44,7 @@ function Navigation() {
         
 
         <NavLink className='user-link' to={`/users/${sessionUser.id}`}>
-          <div className='user-link-initial'>{initial}</div>
+          <div className='user-link-initial'>{initial.toUpperCase()}</div>
         </NavLink>
         <ProfileButton user={sessionUser} />
       </div>

@@ -32,7 +32,7 @@
 }
 
 .show-info-wrapper {
-    width: 350px;
+    max-width: 400px;
     margin: 20px 20px 0px 20px;
     /* why isn't this showing up as the height of the showpage? */
 }
@@ -100,9 +100,9 @@
     border-top-style: solid;
     border-top-color: rgb(219, 219, 219);
     border-top-width: 1px;
-    flex: 1;
-    /* position: relative;   */
-    
+
+    position: relative;  
+    height: 100px;
 }
 
 .comment-container {

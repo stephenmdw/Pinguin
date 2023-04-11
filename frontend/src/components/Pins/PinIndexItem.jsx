@@ -15,7 +15,7 @@ export default function PinIndexItem({ pin }) {
     const { userId } = useParams()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user);
-
+    const [isSaved, setIsSaved] = useState(false)
     const [isHovered, setIsHovered] = useState(false);
 
     // spacer.style.setProperty('height', randHeight)
