@@ -26,22 +26,22 @@ export default function BoardEditForm({ setShowBoardEditModal, board }) {
     return (
         <div className='background-shade'>
             <form className="board-edit-form">
-                <div className='pin-edit-form-wrapper'>
-                    <header className='edit-header'>Edit this Pin</header>
-                    <div className="pin-edit-area">
-                            <div className='edit-input-wrapper'>
-                                <div className='label-edit-wrapper'>
-                                    <label>Title</label>
-                                </div>
-                                <div className='single-line-edit-input-wrapper'>
-                                    <input
-                                        type="text"
-                                        placeholder="Add your title"
-                                        value={title}
-                                        className="single-line-edit-input"
-                                        onChange={(e) => setTitle(e.target.value)}
-                                        require='true'>
-                                    </input>
+                <div className='board-edit-form-wrapper'>
+                    <header className='board-edit-header'>Edit this Board</header>
+                    <div className="board-edit-area">
+                        <div className='board-edit-input-wrapper'>
+                            <div className='board-label-edit-wrapper'>
+                                <label>Title</label>
+                            </div>
+                            <div className='single-line-edit-input-wrapper'>
+                                <input
+                                    type="text"
+                                    placeholder="Add your title"
+                                    value={title}
+                                    className="single-line-edit-input"
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    require='true'>
+                                </input>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ export default function BoardEditForm({ setShowBoardEditModal, board }) {
                             <button className="delete-button" onClick={deleteCurrentBoard}>
                                 Delete</button>
                         </div>
-                        <div className='cancel-and-save'>
+                        <div className='board-cancel-and-save'>
                             <button className='cancel-button' onClick={() => setShowBoardEditModal(false)}>Cancel</button>
                             {/* <input className="save-input" type="submit" value="Save" /> */}
                             <button className='save-edit-button' onClick={(e) => handleSubmit(e)}>Save</button>
