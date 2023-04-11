@@ -20,7 +20,7 @@
 .board-edit-form {
     all: none;
     border-radius: 16px;
-    width: 600px;
+    width: 650px;
     height: 400px;
     display: flex;
     background-color: white;
@@ -36,10 +36,14 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     font-weight: 600;
     font-size: 28px;
-    width: 100%;
+    /* width: 100%; */
     flex: 1;
 }
 
+.board-edit-button:hover {
+    background-color: #413434;
+
+}
 
 .pin-edit-area {
     display: flex;
@@ -47,11 +51,6 @@
     height: 400px;
     flex: 8;
     padding: 0px 15px;
-}
-
-.left-edit-input {
-    display: flex;
-    flex-direction: column;
 }
 
 .edit-input-wrapper {
@@ -86,7 +85,7 @@
     padding: 8px 16px;
     height: 28px;
     border-radius: 15px;
-    width: 100%;
+    /* width: 100%; */
     font-size: 16px;
     border-color: #cdcdcd;
     border-style: solid;
@@ -131,10 +130,11 @@
     color: black;
     font-size: 16px;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .cancel-button {
-
+    cursor: pointer;
     width: 80px;
     height: 40px;
     border-radius: 20px;
@@ -152,7 +152,7 @@
 }
 
 .save-edit-button {
-
+    cursor:  pointer;
     width: 70px;
     height: 40px;
     border-radius: 20px;

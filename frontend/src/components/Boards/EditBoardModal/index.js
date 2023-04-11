@@ -12,7 +12,8 @@ function BoardEditModal({ board }) {
             <button className="board-edit-button" style={{
                 borderStyle:'none',
                 backgroundColor:'transparent',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                fontWeight:'600'
             }}
                 onClick={() => setShowBoardEditModal(true)}>Edit Board</button>
             {showBoardEditModal && (
