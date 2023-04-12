@@ -14,6 +14,23 @@ function Navigation() {
   const sessionUser = useSelector(state => state.session.user);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showShadow, setShowShadow] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY > 0) {
+        setShowShadow(true);
+      } else {
+        setShowShadow(false);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   let sessionLinks;
 
@@ -82,7 +99,7 @@ function Navigation() {
   }
 
   return (
-    <div className='navbar'>
+    <div className={showShadow ? 'navbar-shadow' : 'navbar'}>
       <div className='left-side'>
         <NavLink className="home-link" exact to="/">
           <div className={sessionUser ? "small-home-button" : "home-button"}></div>
