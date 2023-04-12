@@ -48,7 +48,7 @@ export default function PinShow() {
         return (
 
             <div className='show-page' style={{ paddingTop: '100px' }}>
-                <div style={{ maxWidth: '40%' }}>
+                <div className='show-back-button'>
                     <KeyboardBackspaceIcon className='back-icon' onClick={() => history.push('/feed')} style={{ height: '40px', width: '40px', fontSize: '30', marginLeft: '20px', marginRight: '200px', cursor: 'pointer' }} />
                 </div>
                 <div className='show-wrapper'>
@@ -62,9 +62,9 @@ export default function PinShow() {
                         </div> */}
                         {/* </div> */}
 
-                        <div className='show-topbar' style={{ position: 'fixed' }}></div>
+                        {/* <div className='show-topbar' style={{ position: 'fixed' }}></div> */}
                         <div className='show-info'>
-                            <div style={{ overflow: 'auto', display: 'flex', flexDirection: 'column', alignContent:'space-between'}}>
+                            <div style={{ overflow: 'auto', display: 'flex', flexDirection: 'column', alignContent:'space-between', height: '100%'}}>
                                 <div className="show-pin-destination">
                                     {pin.destinationLink}
                                 </div>
