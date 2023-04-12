@@ -33,6 +33,7 @@ export default function BoardEditForm({ setShowBoardEditModal, board }) {
                             <div className='board-label-edit-wrapper'>
                                 <label>Title</label>
                             </div>
+                            
                             <div className='single-line-edit-input-wrapper'>
                                 <input
                                     type="text"
