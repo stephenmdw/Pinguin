@@ -23,7 +23,11 @@ export default function PinEditForm({ setShowPinEditModal, pin }) {
     function handleSubmit(e) {
         e.preventDefault()
         let newPin = { ...pin, title, description, altText, destinationLink }
-        if (dispatch(updatePin(newPin))) {
+
+        if (title.length === 0) {
+            setErrors('Title cannot be blank')
+        } else {
+            dispatch(updatePin(newPin))
             setShowPinEditModal(false)
         }
     }
@@ -56,8 +60,9 @@ export default function PinEditForm({ setShowPinEditModal, pin }) {
                             setDestinationLink={setDestinationLink}
                         />
                     </div>
-
                 </div> */}
+                    {errors}
+
                     <div className="pin-edit-area">
                         <div className='left-edit-input'>
                             <div className='edit-input-wrapper'>
@@ -73,6 +78,7 @@ export default function PinEditForm({ setShowPinEditModal, pin }) {
                                         onChange={(e) => setTitle(e.target.value)}
                                         require='true'>
                                     </input>
+
                                 </div>
                             </div>
                             <div className='edit-input-wrapper'>

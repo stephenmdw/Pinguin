@@ -51,6 +51,7 @@ class Api::PinsController < ApplicationController
 
     def update
         @pin = Pin.find_by(id: params[:id])
+        @user = User.find_by(id: @pin.user_id)
         if @pin.update(pin_params)
             render :show
         else
