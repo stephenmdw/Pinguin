@@ -4,6 +4,9 @@ import { useHistory } from "react-router-dom";
 import { getBoards, fetchBoards } from "../../../store/boardsReducer";
 import BoardMenuItem from "./BoardMenuItem";
 import './BoardDropdown.css'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { addPinToBoard } from "../../../store/pinBoardReducer";
+
 function BoardDropdown({ pin }) {
     const dispatch = useDispatch();
     const history = useHistory()
@@ -11,11 +14,16 @@ function BoardDropdown({ pin }) {
     const sessionUser = useSelector(state => state.session.user);
     const boards = useSelector(getBoards)
     const userBoards = boards.filter((board) => board.userId == sessionUser.id)
-
+    const [isSaved, setIsSaved] = useState(false)
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
+
+    const defaultSave = (pinId) => {
+        dispatch(addPinToBoard({pinId: pinId, boardId: 1}))
+        setIsSaved(true)
+    }
 
     useEffect(() => {
         dispatch(fetchBoards())
@@ -35,14 +43,15 @@ function BoardDropdown({ pin }) {
 
     return (
         <div className="board-menu-button-wrapper">
-            <button className="board-menu-opener" onClick={openMenu}>Board</button>
-            <div className='board-menu-save'>Save</div>
+            <button className="board-menu-opener" onClick={openMenu}>Board <ExpandMoreIcon/></button>
+            <div className={isSaved ? 'board-menu-saved' : 'board-menu-save'} onClick={()=>defaultSave(pin.id)}>{isSaved ? "Saved" : "Save"}</div>
             {showMenu && (
                     <div className="board-dropdown-wrapper-div">
-                        <ul className="board-dropdown">
                         <div className='board-menu-header'>Save</div>
-
-                            {userBoards.map((board) => (<li className='boardmenuitem'> <BoardMenuItem pin={pin} board={board} /> </li>))}
+                        <ul className="board-dropdown">
+                            {userBoards.map((board) => (<li className='boardmenuitem'> 
+                            <BoardMenuItem pin={pin} board={board} /> 
+                            </li>))}
                         </ul>
                     </div>
             )}

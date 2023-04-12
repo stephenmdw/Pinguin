@@ -10,6 +10,7 @@ class Api::BoardsController < ApplicationController
 
     def show
         @board = Board.find_by(id: params[:id])
+        @user = User.find_by(id: @board.user_id)
         render :show
     end
 
@@ -28,7 +29,8 @@ class Api::BoardsController < ApplicationController
     end
 
     def update
-        @board.find(params[:id])
+        @board = Board.find(params[:id])
+        @user = User.find_by(id: @board.user_id)
         if @board.update(board_params) 
             render :show
         else

@@ -4,12 +4,18 @@ import BoardEditForm from './BoardEditForm';
 import './BoardEdit.css'
 
 
-function BoardEditModal({board}) {
+function BoardEditModal({ board }) {
     const [showBoardEditModal, setShowBoardEditModal] = useState(false)
-
+    console.log(showBoardEditModal)
     return (
         <>
-            <button className="board-edit-button" onClick={()=>setShowBoardEditModal(true)}>Edit Board</button>
+            <button className="board-edit-button" style={{
+                borderStyle:'none',
+                backgroundColor:'transparent',
+                cursor: 'pointer',
+                fontWeight:'600'
+            }}
+                onClick={() => setShowBoardEditModal(true)}>Edit Board</button>
             {showBoardEditModal && (
                 <Modal onClose={() => setShowBoardEditModal(false)}>
                     <BoardEditForm

@@ -15,13 +15,13 @@ export default function PinIndexItem({ pin }) {
     const { userId } = useParams()
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user);
-
+    const [isSaved, setIsSaved] = useState(false)
     const [isHovered, setIsHovered] = useState(false);
 
     // spacer.style.setProperty('height', randHeight)
     function handleClick(e) {
         e.preventDefault()
-        if (e.target.className === 'index-image') {
+        if (e.target.className === 'index-image-dark') {
             history.push(`/pin/${pin.id}`)
         }
     }    
@@ -31,13 +31,13 @@ export default function PinIndexItem({ pin }) {
             <div className='pin-index-item-large' onClick={handleClick}  onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
                 {isHovered &&
-                    <div className="save-button">
+                    <div className="save-button" >
                         <BoardDropdown pin={pin} />    
                     </div>}
                 
 
                 <img
-                    className='index-image'                    
+                    className={isHovered ? 'index-image-dark' : 'index-image'}                    
                     src={pin.photoUrl}
                     style={{
                         backgroundColor: 'white',

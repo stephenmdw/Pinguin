@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
 import BoardForm from './BoardForm';
 import './CreateBoard.css'
-
+import AddIcon from '@mui/icons-material/Add';
 
 function BoardCreate() {
     // const showPinEditModal = props.showPinEditModal
@@ -12,7 +12,7 @@ function BoardCreate() {
     // const setShowSignUpModal = props.setShowSignUpModal
     return (
         <>
-            <button className="modal-board-create" onClick={() => setShowBoardFormModal(true)}>+</button>
+            <button className="modal-board-create" onClick={() => setShowBoardFormModal(true)}><AddIcon/></button>
             {showBoardFormModal && (
                 <Modal onClose={() => setShowBoardFormModal(false)}>
                     <BoardForm

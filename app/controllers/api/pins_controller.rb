@@ -31,6 +31,7 @@ class Api::PinsController < ApplicationController
 
         @pin = Pin.new(pin_params2)
         @pin.user_id = current_user.id
+        @user = User.find_by(id: @pin.user_id)
         if @pin.save
             render :show
         else

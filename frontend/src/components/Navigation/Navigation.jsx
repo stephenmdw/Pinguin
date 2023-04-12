@@ -44,7 +44,7 @@ function Navigation() {
         
 
         <NavLink className='user-link' to={`/users/${sessionUser.id}`}>
-          <div className='user-link-initial'>{initial}</div>
+          <div className='user-link-initial'>{initial.toUpperCase()}</div>
         </NavLink>
         <ProfileButton user={sessionUser} />
       </div>
@@ -87,14 +87,14 @@ function Navigation() {
         <NavLink className="home-link" exact to="/">
           <div className={sessionUser ? "small-home-button" : "home-button"}></div>
         </NavLink>
-        {sessionUser ? <NavLink className="post-form-button" to="/">Home</NavLink> : ""}
+        {sessionUser ? <NavLink className="home-text-button" to="/">Home</NavLink> : ""}
 
         {sessionUser ? <NavLink className="post-form-button" to="/pin-builder">Create</NavLink> : ""}
       </div>
       { sessionUser ? 
       <input style={{width:'70%', 
-        backgroundColor:'#EEEEEE', 
-        height:'35px', 
+        backgroundColor:'#E9E9E9', 
+        height:'45px', 
         borderRadius:'30px',
         fontFamily:'-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
         display:'flex',

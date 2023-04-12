@@ -141,5 +141,12 @@ require 'open-uri'
     Pinboard.create!({board_id: 4, pin_id: 29})
 
     # https://pinguin-seeds.s3.us-west-1.amazonaws.com/pin_1.jpeg
-
+    puts 'Creating comments...'
+    50.times do 
+      Comment.create!(
+        pin_id: Faker::Number.between(from: 1, to: 21),
+        commenter_id: Faker::Number.between(from: 1, to: 10),
+        body: Faker::Lorem.paragraph(sentence_count: 2)
+      )
+    end
     puts "Done!"
