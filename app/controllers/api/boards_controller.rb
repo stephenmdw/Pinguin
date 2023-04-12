@@ -16,6 +16,7 @@ class Api::BoardsController < ApplicationController
 
     def create
         @board = Board.new(board_params)
+        @user = User.find_by(id: @board.user_id)
         if @board.save
             render :show
         else
