@@ -64,7 +64,7 @@ export default function PinShow() {
 
                         {/* <div className='show-topbar' style={{ position: 'fixed' }}></div> */}
                         <div className='show-info'>
-                            <div style={{ overflow: 'auto', display: 'flex', flexDirection: 'column', alignContent:'space-between', height: '100%'}}>
+                            <div style={{ overflow: 'auto', display: 'flex', flexDirection: 'column', alignContent:'space-between', flex:'7'}}>
                                 <div className="show-pin-destination">
                                     {pin.destinationLink}
                                 </div>

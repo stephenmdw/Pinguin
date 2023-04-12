@@ -49,6 +49,11 @@
     opacity: 0;
 }
 
+.splash-photos {
+    display: flex;
+    flex-direction: row;
+}
+
 .animated-text {
     position: relative;
     display: flex;

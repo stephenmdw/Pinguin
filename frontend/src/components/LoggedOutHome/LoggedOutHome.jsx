@@ -32,13 +32,27 @@ export default function LoggedOutHome() {
                 <div className='get-your-next'>Get your next</div>
                 <div className="animated-text">
                     <div className="iceberg-idea">iceberg idea
-                        <div className ="weekend-dinner splash-photos">
-                            <div className='photo1'>
-                                
+                        <div className ="splash-photos">
+                            {/* <div className='photo1' style={{
+                                position:'absolute', 
+                                height: '350px', 
+                                width: '236px', 
+                                overflow: 'none', 
+                                backgroundImage:'url(https://pinguin-seeds.s3.us-west-1.amazonaws.com/splash-images/SplashImages/Fishing/fishing-1-1.jpg', 
+                                borderRadius: '10px', 
+                                backgroundSize:'cover', 
+                                backgroundRepeat:'no-repeat'}}>
                             </div>
-                            <div className='photo2'>
-                                
-                            </div>
+                            <div className='photo1-1' style={{
+                                position:'absolute', 
+                                height: '350px', 
+                                width: '236px', 
+                                overflow: 'none', 
+                                backgroundImage:'url(https://pinguin-seeds.s3.us-west-1.amazonaws.com/splash-images/SplashImages/Fishing/fishing-1-1.jpg', 
+                                borderRadius: '10px', 
+                                backgroundSize:'cover', 
+                                backgroundRepeat:'no-repeat'}}>
+                            </div> */}
                             <div className='photo3'>
                                 
                             </div>
