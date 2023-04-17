@@ -1,7 +1,13 @@
 import csrfFetch from "./csrf"
 
+const RECEIVE_PINBOARDS = 'pinboards/RECEIVE_PINBOARDS'
 const RECEIVE_PINBOARD = 'pinboards/RECEIVE_PINBOARD'
 const REMOVE_PINBOARD = 'pinboards/REMOVE_PINBOARD'
+
+export const receivePinboards = pinboards => ({
+    type: RECEIVE_PINBOARDS,
+    pinboards
+})
 
 export const receivePinboard = (pinboard) => ({
     type: RECEIVE_PINBOARD,
@@ -12,6 +18,10 @@ export const removePinboard = (pinBoardId) => ({
     type: REMOVE_PINBOARD,
     pinBoardId
 })
+
+export const getPinboards = (state) => {
+    return  state.pinboards ? Object.values(state.pinboards) : []
+}
 
 export const fetchPinBoards = (pinboardId) => async dispatch => {
     let res = await csrfFetch(`/api/pinboards/`)

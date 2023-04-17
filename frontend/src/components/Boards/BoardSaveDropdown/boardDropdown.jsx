@@ -5,7 +5,8 @@ import { getBoards, fetchBoards } from "../../../store/boardsReducer";
 import BoardMenuItem from "./BoardMenuItem";
 import './BoardDropdown.css'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { addPinToBoard } from "../../../store/pinBoardReducer";
+import { fetchPinBoards, addPinToBoard, removePinFromBoard } from "../../../store/pinBoardReducer";
+
 
 function BoardDropdown({ pin, isSaved, setIsSaved }) {
     const dispatch = useDispatch();
@@ -22,8 +23,13 @@ function BoardDropdown({ pin, isSaved, setIsSaved }) {
     };
 
     const defaultSave = (pinId) => {
-        dispatch(addPinToBoard({pinId: pinId, boardId: 1}))
-        setIsSaved(true)
+        if(isSaved){
+            dispatch(removePinFromBoard(pin.id, boards[0].id))
+            setIsSaved(false)
+        } else {
+            dispatch(addPinToBoard({pinId: pinId, boardId: boards[0].id }))
+            setIsSaved(true)
+        }
     }
 
     useEffect(() => {
