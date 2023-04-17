@@ -1,6 +1,10 @@
 class Api::PinboardsController < ApplicationController
     wrap_parameters include: Pinboard.attribute_names + ['pinId', 'boardId']
 
+    # def show 
+    #     @pinboard = Pinboard.find_by(pin_id: pinboard_params[:pin_id], board_id: pinboard_params[:board_id] )
+    #     render :show
+    # end
     
     def create
         @pinboard = Pinboard.new(pinboard_params)
@@ -13,11 +17,12 @@ class Api::PinboardsController < ApplicationController
     end
     
     def destroy 
-        @pinboard = Pinboard.find_by(id: params[:id])
+        @pinboard = Pinboard.find_by(pin_id: params[:pin_id], board_id: params[:board_id])
         if @pinboard
             @pinboard.destroy
+            return @pinboard.id
         else
-            render json: {errors: `couldn't delete association`}
+            render json: {errors: "couldn't delete association"}
         end
     end
 

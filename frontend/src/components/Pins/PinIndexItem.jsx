@@ -16,8 +16,7 @@ export default function PinIndexItem({ pin }) {
     const history = useHistory()
     const sessionUser = useSelector(state => state.session.user);
     const [isSaved, setIsSaved] = useState(false)
-    const [isHovered, setIsHovered] = useState(false);
-
+    const [isHovered, setIsHovered] = useState(false);  
     // spacer.style.setProperty('height', randHeight)
     function handleClick(e) {
         e.preventDefault()
@@ -32,7 +31,7 @@ export default function PinIndexItem({ pin }) {
             onMouseLeave={() => setIsHovered(false)}>
                 {isHovered &&
                     <div className="save-button" >
-                        <BoardDropdown pin={pin} />    
+                        <BoardDropdown pin={pin} isSaved={isSaved} setIsSaved={setIsSaved}/>    
                     </div>}
                 
 

@@ -7,14 +7,15 @@ import './BoardDropdown.css'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { addPinToBoard } from "../../../store/pinBoardReducer";
 
-function BoardDropdown({ pin }) {
+function BoardDropdown({ pin, isSaved, setIsSaved }) {
     const dispatch = useDispatch();
     const history = useHistory()
     const [showMenu, setShowMenu] = useState(false);
     const sessionUser = useSelector(state => state.session.user);
     const boards = useSelector(getBoards)
     const userBoards = boards.filter((board) => board.userId == sessionUser.id)
-    const [isSaved, setIsSaved] = useState(false)
+    const [saved, setSaved] = useState(false)
+    
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
@@ -31,13 +32,16 @@ function BoardDropdown({ pin }) {
 
     useEffect(() => {
         if (!showMenu) return;
-
-        const closeMenu = () => {
-            setShowMenu(false);
+    
+        const closeMenu = (event) => {
+            const dropdown = document.querySelector(".board-dropdown-wrapper-div");
+            if (!dropdown.contains(event.target)) {
+                setShowMenu(false);
+            }
         };
-
+    
         document.addEventListener('click', closeMenu);
-
+    
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
@@ -50,7 +54,7 @@ function BoardDropdown({ pin }) {
                         <div className='board-menu-header'>Save</div>
                         <ul className="board-dropdown">
                             {userBoards.map((board) => (<li className='boardmenuitem'> 
-                            <BoardMenuItem pin={pin} board={board} /> 
+                            <BoardMenuItem pin={pin} board={board} saved={saved} setSaved={setSaved}/> 
                             </li>))}
                         </ul>
                     </div>

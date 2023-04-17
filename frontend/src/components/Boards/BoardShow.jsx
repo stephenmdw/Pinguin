@@ -19,7 +19,7 @@ export default function BoardShow() {
     const user = useSelector(getUser(userId))
     const sessionUser = useSelector(state => state.session.user);
     const board = useSelector(getBoard(boardId))
-    const pins = useSelector((state) => Object.values(state.pins))
+
     // const pins = state.pins
     // console.log('pins:', pins)
     // console.log('pin[0]:', pins[0].boardIds)
@@ -48,10 +48,12 @@ export default function BoardShow() {
         if (user) {
         }
 
-        if (!user || !board || !pins) {
+        if (!user || !board) {
             return null
         } else {
             let initial = user.username.slice(0, 1).toUpperCase()
+            const pins = board.pins ? Object.values(board.pins) : []
+
             return (
 
                 <div style={{ paddingTop: '80px' }}>

@@ -5,13 +5,15 @@ import session from './session';
 import pinsReducer from './pinsReducer';
 import boardsReducer from './boardsReducer';
 import commentsReducer from './commentsReducer';
+import pinBoardReducer from './pinBoardReducer';
 
 export const rootReducer = combineReducers({
     users: usersReducer,
     session,
     pins: pinsReducer,
     boards: boardsReducer,
-    comments: commentsReducer
+    comments: commentsReducer,
+    pinBoard: pinBoardReducer
 })
 
 let enhancer;

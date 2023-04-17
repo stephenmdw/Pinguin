@@ -17,21 +17,45 @@ export const fetchPinBoards = (pinboardId) => async dispatch => {
     let res = await csrfFetch(`/api/pinboards/`)
 
     if(res.ok){
-        let pinboard = res.json()
+        let pinboard = await res.json()
         dispatch(receivePinboard(pinboard))
     }
 }
 
+export const fetchPinBoard = (pinId, boardId) => async dispatch => {
+    let res = await csrfFetch(`/api/pinboards?pin_id=${pinId}&board_id=${boardId}`);
+  
+    console.log(res);
+  
+    if (res.ok) {
+      let pinboard = await res.json();
+      dispatch(receivePinboard(pinboard));
+    }
+  };
+
 export const addPinToBoard = (boardId, pinId) => async dispatch => {
     let res = await csrfFetch(`/api/pinboards/`, {
         method: 'POST',
-        haeders: {'Content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(boardId, pinId)
     })
 
     if(res.ok){
-        let pinboard = res.json()
+        let pinboard = await res.json()
         dispatch(receivePinboard(pinboard))
+    }
+}
+
+export const removePinFromBoard = (boardId,  pinId) => async dispatch => {
+    const url = `/api/pinboards?board_id=${boardId}&pin_id=${pinId}`;
+    let res = await csrfFetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'}
+    });
+
+    if(res.ok) {
+        dispatch(removePinboard(boardId, pinId))
     }
 }
 

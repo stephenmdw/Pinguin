@@ -7,8 +7,9 @@
     background-size: 30px;
     background-position: center;
     opacity: 100%;
-    z-index: 8;
+    z-index: 1;
     cursor: pointer;
+    position: relative;
 }
 
 .pin-edit-form-wrapper{ 
