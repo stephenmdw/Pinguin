@@ -71,6 +71,7 @@ function LoginFormPage(props) {
                         required
                     />
                 </label>
+                <div className='errors'>{errors}</div>
             </div>
             <div >
                 <button className="login-button" type="submit">Log In</button>

@@ -14,8 +14,9 @@ class Api::PinboardsController < ApplicationController
     def create
         @pinboard = Pinboard.new(pinboard_params)
         @pin = Pin.find_by(id: pinboard_params[:pin_id])
-        if @pinboard.save
-            render json: {message: 'added pin to board'}
+        if @pinboard.save!
+            @pinboards = Pinboard.all
+            render :index
         else
             render json: @pinboard.errors.full_messages, status: 422
         end
@@ -26,7 +27,6 @@ class Api::PinboardsController < ApplicationController
         if @pinboard
             @pinboard.destroy
             render json: {message: 'removed pin from board'}
-            return @pinboard.id
         else
             render json: {errors: "couldn't delete association"}
         end

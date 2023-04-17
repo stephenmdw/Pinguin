@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :boards, only: [:index, :show, :create, :update, :destroy]
     resources :pins, only: [:index, :show, :create, :update, :destroy]
     resources :comments, only: [:index, :show, :create, :destroy, :update]
-    resources :pinboards, only: [:create]
+    resources :pinboards, only: [:create, :index, :show]
     delete '/pinboards', to: 'pinboards#destroy', as: 'delete_pinboard'
 
   end

@@ -5,7 +5,7 @@ import { getBoards, fetchBoards } from "../../../store/boardsReducer";
 import BoardMenuItem from "./BoardMenuItem";
 import './BoardDropdown.css'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { fetchPinBoards, addPinToBoard, removePinFromBoard } from "../../../store/pinBoardReducer";
+import { fetchPinBoards, addPinToBoard, removePinFromBoard, getPinboards } from "../../../store/pinBoardReducer";
 
 
 function BoardDropdown({ pin, isSaved, setIsSaved }) {
@@ -16,7 +16,8 @@ function BoardDropdown({ pin, isSaved, setIsSaved }) {
     const boards = useSelector(getBoards)
     const userBoards = boards.filter((board) => board.userId == sessionUser.id)
     const [saved, setSaved] = useState(false)
-    
+    let pinboards = useSelector(getPinboards)
+
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
@@ -27,13 +28,14 @@ function BoardDropdown({ pin, isSaved, setIsSaved }) {
             dispatch(removePinFromBoard(pin.id, boards[0].id))
             setIsSaved(false)
         } else {
-            dispatch(addPinToBoard({pinId: pinId, boardId: boards[0].id }))
+            dispatch(addPinToBoard({boardId: boards[0].id, pinId: pinId}))
             setIsSaved(true)
         }
     }
 
     useEffect(() => {
         dispatch(fetchBoards())
+        dispatch(fetchPinBoards())
     }, [dispatch])
 
     useEffect(() => {
@@ -60,7 +62,7 @@ function BoardDropdown({ pin, isSaved, setIsSaved }) {
                         <div className='board-menu-header'>Save</div>
                         <ul className="board-dropdown">
                             {userBoards.map((board) => (<li className='boardmenuitem'> 
-                            <BoardMenuItem pin={pin} board={board} saved={saved} setSaved={setSaved}/> 
+                            <BoardMenuItem pin={pin} board={board} saved={saved} setSaved={setSaved} pinboards={pinboards}/> 
                             </li>))}
                         </ul>
                     </div>
