@@ -1,7 +1,7 @@
 import csrfFetch from "./csrf"
 
 const RECEIVE_PINBOARD = 'pinboards/RECEIVE_PINBOARD'
-const REMOVE_PINBOARD = 'pinboards/RECEIVE_PINBOARD'
+const REMOVE_PINBOARD = 'pinboards/REMOVE_PINBOARD'
 
 export const receivePinboard = (pinboard) => ({
     type: RECEIVE_PINBOARD,
