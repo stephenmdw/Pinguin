@@ -14,10 +14,9 @@ export const receivePinboard = (pinboard) => ({
     pinboard
 })
 
-export const removePinboard = (boardId, pinId) => ({
+export const removePinboard = (pinboardId) => ({
     type: REMOVE_PINBOARD,
-    boardId,
-    pinId
+    pinboardId
 })
 
 export const getPinboards = (state) => {
@@ -80,7 +79,7 @@ export default function pinBoardReducer(state = {}, action) {
             return action.pinboard
         case REMOVE_PINBOARD:
             const newPinboards = { ...newState };
-            delete newPinboards[`${action.boardId}-${action.pinId}`];
+            delete newPinboards[action.pinboardId];
             return newPinboards;
         default:
             return state;

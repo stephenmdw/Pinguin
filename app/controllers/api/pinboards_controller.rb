@@ -26,7 +26,7 @@ class Api::PinboardsController < ApplicationController
         @pinboard = Pinboard.find_by(pin_id: params[:pin_id], board_id: params[:board_id])
         if @pinboard
             @pinboard.destroy
-            render json: {message: 'removed pin from board'}
+            render json: { id: @pinboard.id }
         else
             render json: {errors: "couldn't delete association"}
         end

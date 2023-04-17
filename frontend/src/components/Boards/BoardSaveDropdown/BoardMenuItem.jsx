@@ -11,7 +11,6 @@ export default function BoardMenuItem({ pin, board }) {
     const pinboards = useSelector(getPinboards)
 
     useEffect(() => {
-        let isMounted = true; // to prevent setting state on an unmounted component
         const checkAssociationExists = () => {
             for (let i = 0; i < pinboards.length; i++) {
                 if (pinboards[i].pinId === pin.id && pinboards[i].boardId === board.id) {
@@ -20,13 +19,11 @@ export default function BoardMenuItem({ pin, board }) {
             }
             return false;
         };
-        console.log(checkAssociationExists())
 
-        setSaved(checkAssociationExists());
-        console.log(saved)
-        return () => {
-            isMounted = false;
-        };
+            setSaved(checkAssociationExists());
+        // return () => {
+        //     isMounted = false;
+        // };
     }, [pinboards, pin.id, board.id, dispatch, saved]);
 
 
@@ -34,9 +31,10 @@ export default function BoardMenuItem({ pin, board }) {
         console.log(saved, '-------------handleclick--------------')
         if (saved) {
             try {
-                dispatch(fetchPinBoards());
-                dispatch(removePinFromBoard(pin.id, board.id)).then(() => {
                 setSaved(false);
+                await dispatch(removePinFromBoard(board.id, pin.id)).then(() => {
+                dispatch(fetchPinBoards());
+                setSaved(false)
               })
             } catch (error) {
                 console.log(error);

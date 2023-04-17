@@ -16,7 +16,7 @@ function BoardDropdown({ pin, isSaved, setIsSaved }) {
     const boards = useSelector(getBoards)
     const userBoards = boards.filter((board) => board.userId == sessionUser.id)
     const [saved, setSaved] = useState(false)
-    let pinboards = useSelector(getPinboards)
+    // let pinboards = useSelector(getPinboards)
 
     const openMenu = () => {
         if (showMenu) return;
@@ -25,7 +25,7 @@ function BoardDropdown({ pin, isSaved, setIsSaved }) {
 
     const defaultSave = (pinId) => {
         if(isSaved){
-            dispatch(removePinFromBoard(pin.id, boards[0].id))
+            dispatch(removePinFromBoard(boards[0].id, pin.id))
             setIsSaved(false)
         } else {
             dispatch(addPinToBoard({boardId: boards[0].id, pinId: pinId}))
@@ -35,7 +35,6 @@ function BoardDropdown({ pin, isSaved, setIsSaved }) {
 
     useEffect(() => {
         dispatch(fetchBoards())
-        dispatch(fetchPinBoards())
     }, [dispatch])
 
     useEffect(() => {
@@ -62,7 +61,7 @@ function BoardDropdown({ pin, isSaved, setIsSaved }) {
                         <div className='board-menu-header'>Save</div>
                         <ul className="board-dropdown">
                             {userBoards.map((board) => (<li className='boardmenuitem'> 
-                            <BoardMenuItem pin={pin} board={board} saved={saved} setSaved={setSaved} pinboards={pinboards}/> 
+                            <BoardMenuItem pin={pin} board={board} /> 
                             </li>))}
                         </ul>
                     </div>
