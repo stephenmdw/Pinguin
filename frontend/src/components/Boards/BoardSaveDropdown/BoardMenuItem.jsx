@@ -10,32 +10,32 @@ export default function BoardMenuItem({ pin, board }) {
     const [saved, setSaved] = useState(false)
     const pinboards = useSelector(getPinboards)
 
-    useEffect(() => {
-        const checkAssociationExists = () => {
-            for (let i = 0; i < pinboards.length; i++) {
-                if (pinboards[i].pinId === pin.id && pinboards[i].boardId === board.id) {
-                    return true;
-                }
-            }
-            return false;
-        };
+    console.log(pinboards)
 
-            setSaved(checkAssociationExists());
-        // return () => {
-        //     isMounted = false;
-        // };
-    }, [pinboards, pin.id, board.id, dispatch, saved]);
+    const checkAssociationExists = () => {
+        for (let i = 0; i < pinboards.length; i++) {
+            if (pinboards[i].pinId === pin.id && pinboards[i].boardId === board.id) {
+                return true;
+            }
+        }
+        return false;
+    };
+    
+    useEffect(() => {
+        dispatch(fetchPinBoards());
+        const isSaved = checkAssociationExists();
+        setSaved(isSaved);
+    }, [pin.id, board.id, dispatch]);
+
 
 
     const handleClick = async () => {
-        console.log(saved, '-------------handleclick--------------')
         if (saved) {
             try {
-                setSaved(false);
+                // setSaved(false);
                 await dispatch(removePinFromBoard(board.id, pin.id)).then(() => {
-                dispatch(fetchPinBoards());
-                setSaved(false)
-              })
+                    setSaved(false)
+                })
             } catch (error) {
                 console.log(error);
             }
@@ -68,5 +68,3 @@ export default function BoardMenuItem({ pin, board }) {
         </div>
     )
 }
-
-//create pinboard route

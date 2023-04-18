@@ -15,7 +15,7 @@ function BoardDropdown({ pin, isSaved, setIsSaved }) {
     const sessionUser = useSelector(state => state.session.user);
     const boards = useSelector(getBoards)
     const userBoards = boards.filter((board) => board.userId == sessionUser.id)
-    const [saved, setSaved] = useState(false)
+    // const [saved, setSaved] = useState(false)
     // let pinboards = useSelector(getPinboards)
 
     const openMenu = () => {
@@ -28,7 +28,7 @@ function BoardDropdown({ pin, isSaved, setIsSaved }) {
             dispatch(removePinFromBoard(boards[0].id, pin.id))
             setIsSaved(false)
         } else {
-            dispatch(addPinToBoard({boardId: boards[0].id, pinId: pinId}))
+            dispatch(addPinToBoard(boards[0].id, pin.id))
             setIsSaved(true)
         }
     }

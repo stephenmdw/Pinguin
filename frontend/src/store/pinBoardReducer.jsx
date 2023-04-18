@@ -66,7 +66,9 @@ export const removePinFromBoard = (boardId, pinId) => async dispatch => {
     });
 
     if (res.ok) {
-        dispatch(removePinboard(boardId, pinId))
+        let data = await res.json()
+        console.log(data)
+        dispatch(removePinboard(data.id))
     }
 }
 
@@ -74,13 +76,12 @@ export default function pinBoardReducer(state = {}, action) {
     let newState = { ...state }
     switch (action.type) {
         case RECEIVE_PINBOARDS:
-            return { ...state, ...action.pinboards }
+            return { ...newState, ...action.pinboards }
         case RECEIVE_PINBOARD:
             return action.pinboard
         case REMOVE_PINBOARD:
-            const newPinboards = { ...newState };
-            delete newPinboards[action.pinboardId];
-            return newPinboards;
+            delete newState[action.pinboardId];
+            return newState;
         default:
             return state;
     }
