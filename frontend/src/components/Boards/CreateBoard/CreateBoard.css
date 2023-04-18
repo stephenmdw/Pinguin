@@ -11,6 +11,22 @@
     width: 492px;
 }
 
+.modal-board-create {
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-board-create:hover {
+    background-color: #E9E9E9;
+    border-radius: 30px;
+}
+
 .create-board-header {
     text-align: center;
     font-weight: 600;

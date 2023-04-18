@@ -70,9 +70,8 @@ export default function UserShow() {
                     </div>
                 </div>
                 <div className='plus-button-wrapper'>
-                    <div className='plus-button'>
+
                         <BoardCreate/>
-                    </div>
                 </div>
                     {createdOrSaved()}
             </div>

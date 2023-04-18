@@ -1,6 +1,13 @@
 .board-index-wrapper {
     display: flex;
     justify-content: center;
+    
+}
+
+.board-index-div {
+    display: flex;
+    width: 90%;
+    height: 30%;
 }
 
 .board-index-label {
@@ -8,6 +15,8 @@
     text-align: center;
     font-size: 24px;
     display: flex;
+    flex-wrap: wrap;
+    padding:20px 50px;
 }
 
 .board-index-item {
@@ -22,12 +31,11 @@
 
 .board-index-item-div:hover {
     background-color: #efefefef
-
 }
 
-.board-placeholder  {
+.board-placeholder {
     height: 150px;
     width: 240px;
     background-color: #DDDDDD;
-    border-radius: 10px;    
+    border-radius: 10px;
 }
