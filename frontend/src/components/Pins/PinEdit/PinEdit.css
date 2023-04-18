@@ -9,7 +9,7 @@
     opacity: 100%;
     z-index: 1;
     cursor: pointer;
-    position: relative;
+    position: absolute;
 }
 
 .pin-edit-form-wrapper{ 

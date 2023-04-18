@@ -13,7 +13,7 @@ function BoardEditModal({ board }) {
                 borderStyle:'none',
                 backgroundColor:'transparent',
                 cursor: 'pointer',
-                fontWeight:'600'
+                fontWeight:'600',
             }}
                 onClick={() => setShowBoardEditModal(true)}>Edit Board</button>
             {showBoardEditModal && (
