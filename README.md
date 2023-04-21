@@ -22,10 +22,11 @@ Pinguin is a [pinterest](https://www.pinterest.com/) clone that allows registere
 ![pinguinsplash](https://user-images.githubusercontent.com/117553743/233537512-13033a89-8f21-4ce5-a914-1a0893a93ddd.gif)
 
 ### Home page
-![](/Pinguin/frontend/src/assets/Pinguin-preview-splash.png "Home page")
+[pinguinhomepage](https://user-images.githubusercontent.com/1
+17553743/233538102-be54a8af-7dd2-4ed2-a38d-0f1dbe7492b1.gif)
 
 ### Board view page
-![](/Pinguin/frontend/src/assets/Pinguin-board.png "Board view page")
+<img width="1440" alt="Screenshot 2023-04-20 at 9 04 02 PM" src="https://user-images.githubusercontent.com/117553743/233538370-0da9ece1-f28b-4809-97eb-8f9298c2a579.png">
 
 ### Create pin page
 ![](/Pinguin/frontend/src/assets/Pinguin-create-preview.png)
@@ -75,5 +76,6 @@ function App() {
         </Route>
          <Route path="/">
           {sessionUser ? <PinIndex/> : <LoggedOutHome/>}
-        </Route>
+        </Route>!
+
 ```
