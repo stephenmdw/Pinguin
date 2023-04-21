@@ -19,7 +19,7 @@ Pinguin is a [pinterest](https://www.pinterest.com/) clone that allows registere
 * onRender
 
 ### Splash page
-![](/Pinguin/frontend/src/assets/Pinguin-splash.png)
+![pinguinsplash](https://user-images.githubusercontent.com/117553743/233537512-13033a89-8f21-4ce5-a914-1a0893a93ddd.gif)
 
 ### Home page
 ![](/Pinguin/frontend/src/assets/Pinguin-preview-splash.png "Home page")
@@ -62,6 +62,7 @@ function App() {
   const history = useHistory()
 
   function requireLogIn(component){
+
     return !sessionUser ? history.push('/') : component
   }
 
